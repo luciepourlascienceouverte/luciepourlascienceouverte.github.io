@@ -94,6 +94,7 @@
   .card-title {
     font-size: 16px;
     padding: 10px 10px 0;
+    text-align: center;
   }
   .card-title.red    { color: #ff6a6a; }
   .card-title.green  { color: #98ff6a; }
@@ -101,16 +102,66 @@
   .card-title.cyan   { color: #00ffec; }
   .card-title.gold   { color: #f7ff00; }
 
+  /* sprites par défaut : centrés */
   .card-sprites {
     display: flex;
     gap: 4px;
     padding: 4px 10px;
+    justify-content: center;
+    align-items: center;
   }
   .card-sprites img {
     height: 45px;
     image-rendering: pixelated;
   }
   .card-sprites img.wide { height: 45px; width: auto; }
+
+  /* licences : image au-dessus du label */
+  .licence-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 10px 0;
+  }
+  .licence-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    color: #fff16f;
+  }
+  .licence-item span { order: -1; } /* label au-dessus */
+  .licence-item img { height: 45px; image-rendering: pixelated; }
+
+  /* goa : sprite gauche + titre + sprite droit */
+  .goa-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 10px 0;
+  }
+  .goa-header img { height: 45px; image-rendering: pixelated; }
+  .goa-title { font-size: 14px; color: #98ff6a; text-align: center; }
+
+  /* couperin : grosse boule centrée, puis titre flanqué des 2 petites */
+  .couperin-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 0;
+    gap: 6px;
+  }
+  .couperin-header img.big { height: 60px; image-rendering: pixelated; }
+  .couperin-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .couperin-title-row img.small { height: 25px; image-rendering: pixelated; }
+  .couperin-title { font-size: 16px; color: #00ffec; }
 
   .badge {
     display: block;
@@ -235,14 +286,13 @@ window.addEventListener('load', function () {
 
 <!-- Éditeurs OA -->
 <div class="card card-green">
-  <div class="card-title green">Les éditeurs en accès ouvert (OA) &amp; licences</div>
-  <div class="card-sprites">
-    <img src="assets/unlock.gif" alt=""><img src="assets/unlock.gif" alt="">
-    <img src="assets/ccby.gif" alt="" class="wide"><img src="assets/nc-nd.gif" alt="" class="wide">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:10px 40px 0; justify-items:center;">
+    <img src="assets/ccby.gif"   style="height:45px; image-rendering:pixelated;">
+    <img src="assets/nc-nd.gif"  style="height:45px; image-rendering:pixelated;">
+    <img src="assets/unlock.gif" style="height:45px; image-rendering:pixelated;">
+    <img src="assets/unlock.gif" style="height:45px; image-rendering:pixelated;">
   </div>
-  <span class="badge badge-green">+1 article / +50 lecteurs</span>
-  <span class="badge badge-green">CC BY : bouclier (7s)</span>
-  <span class="badge badge-yellow"><span class="hl-yellow">CC BY NC-ND</span> : <span class="hl-red">-20 lecteurs</span></span>
+  <div class="card-title green">Les éditeurs en accès ouvert (OA) &amp; licences</div>
   <div class="card-body green">
     Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous
     <span class="hl-yellow">CC-BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale
@@ -256,9 +306,10 @@ window.addEventListener('load', function () {
 
 <!-- Green OA -->
 <div class="card card-teal">
-  <div class="card-title green">Le Green Open Access</div>
-  <div class="card-sprites">
-    <img src="assets/goa.gif" alt=""><img src="assets/goa.gif" alt="">
+  <div class="goa-header">
+    <img src="assets/goa.gif" alt="">
+    <div class="goa-title">Le Green Open Access</div>
+    <img src="assets/goa.gif" alt="">
   </div>
   <span class="badge badge-green">+1 article / +25 lecteurs</span>
   <span class="badge badge-yellow"><span class="hl-yellow">CC BY NC-ND</span> : <span class="hl-red">-20 lecteurs</span></span>
@@ -275,10 +326,11 @@ window.addEventListener('load', function () {
 
 <!-- APCs -->
 <div class="card card-gold">
-  <div class="card-title cyan">L'édition ouverte et les frais de publication (APCs)</div>
-  <div class="card-sprites">
-    <img src="assets/oa-apc.gif" alt=""><img src="assets/apc_text.gif" alt="" class="wide">
+  <div class="card-sprites" style="flex-direction: column; align-items: center; gap: 0;">
+    <img src="assets/apc_text.gif" alt="" style="height:40px;">
+    <img src="assets/oa-apc.gif" alt="" style="height:55px;">
   </div>
+  <div class="card-title cyan">L'édition ouverte et les frais de publication (APCs)</div>
   <span class="badge badge-green">+1 article / +50 lecteurs</span>
   <span class="badge badge-yellow">APCs : archives OA et Green OA disparaissent / + de monstres (7s)</span>
   <div class="card-body green">
@@ -311,11 +363,13 @@ window.addEventListener('load', function () {
 
 <!-- Couperin -->
 <div class="card card-cyan">
-  <div class="card-title cyan">Couperin</div>
-  <div class="card-sprites">
-    <img src="assets/Couperin.gif" alt="">
-    <img src="assets/immunitecouperin.gif" alt="">
-    <img src="assets/immunitecouperin.gif" alt="">
+  <div class="couperin-header">
+    <img class="big" src="assets/Couperin.gif" alt="Couperin">
+    <div class="couperin-title-row">
+      <img class="small" src="assets/immunitecouperin.gif" alt="">
+      <div class="couperin-title">Couperin</div>
+      <img class="small" src="assets/immunitecouperin.gif" alt="">
+    </div>
   </div>
   <span class="badge badge-green">+1 article / bouclier (2s)</span>
   <div class="card-body cyan">
