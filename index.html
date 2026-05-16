@@ -56,9 +56,27 @@
   .card-sprites img { height: 45px; image-rendering: pixelated; }
 
   /* Lucie : déborde en haut, sprite à gauche du nom */
-  .lucie-header { display: flex; align-items: center; padding: 0 10px 0 14px; margin-top: -40px; }
-  .lucie-header img { width: 45px; image-rendering: pixelated; flex-shrink: 0; }
-  .lucie-name { font-size: 16px; color: #fff16f; margin-left: 10px; }
+ .lucie-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 22px 18px 0 18px;
+  min-height: 72px;
+}
+
+.lucie-header img {
+  position: absolute;
+  left: 14px;
+  top: -22px;
+  width: 52px;
+  image-rendering: pixelated;
+}
+
+.lucie-name {
+  font-size: 16px;
+  color: #fff16f;
+  margin-left: 68px;
+}
 
   /* Green OA */
   .goa-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 10px 0; }
