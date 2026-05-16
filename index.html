@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucie — une course pour la science ouverte</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+  a { text-decoration: none; }
   body {
     font-family: 'Space Mono', monospace;
     background-color: #000;
@@ -18,26 +17,45 @@
     padding: 0 12px 60px;
   }
 
-  .card {
-    border-radius: 25px;
-    margin: 12px;
-    padding: 1px 0;
-    overflow: visible;
+  /* HERO */
+  .hero { display: flex; flex-direction: column; padding-top: 50px; }
+  .hero-char { width: 46px; image-rendering: pixelated; margin-bottom: -30px; margin-left: 10px; position: relative; z-index: 1; }
+  .hero-title { font-size: 24px; color: #ffd000; margin: 0 0 0 10px; }
+  .hero-sub { font-size: 12px; color: #fff1b5; margin: 10px 0 0 25px; }
+
+  /* BOUTON */
+  .play-btn {
+    display: block; font-family: 'Space Mono', monospace; font-size: 16px;
+    color: #00ffd0; border: 2px solid #00ffd0; border-radius: 50px;
+    padding: 12px 40px; text-decoration: none; text-align: center;
+    margin: 30px auto 0; width: fit-content;
   }
 
-  .card-yellow {
-    background: rgba(198,186,13,0.28);
-    border: 1px solid #ffda00;
-  }
+  /* SECTION TITRE */
+  .section-title { font-size: 16px; color: #ffcb00; margin: 24px 10px 16px; }
 
-  .card-body {
-    font-size: 10px;
-    line-height: 1.6;
-    margin: 12px;
-    color: #fff1bc;
-  }
+  /* CARTES */
+  .card { border-radius: 25px; margin: 12px 12px; padding: 1px 0; overflow: visible; }
+  .card-yellow { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
+  .card-red    { background: rgba(198,13,13,0.28);  border: 1px solid #ff0000; }
+  .card-green  { background: rgba(91,198,13,0.28);  border: 1px solid #2bff00; }
+  .card-teal   { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
+  .card-gold   { background: rgba(146,114,8,0.28);  border: 1px solid #ffe500; }
+  .card-cyan   { background: rgba(8,133,146,0.28);  border: 1px solid #00fdff; }
+  .card-lime   { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
 
-  /* NOUVELLE DISPOSITION LUCIE */
+  .card-title { font-size: 16px; padding: 8px 10px 0; text-align: center; }
+  .card-title.red    { color: #ff6a6a; }
+  .card-title.green  { color: #98ff6a; }
+  .card-title.yellow { color: #fff16f; }
+  .card-title.cyan   { color: #00ffec; }
+  .card-title.gold   { color: #f7ff00; }
+
+  /* sprites centrés */
+  .card-sprites { display: flex; gap: 4px; padding: 8px 10px 0; justify-content: center; align-items: center; }
+  .card-sprites img { height: 45px; image-rendering: pixelated; }
+
+  /* Lucie */
   .lucie-header {
     position: relative;
     display: flex;
@@ -60,32 +78,44 @@
     margin-left: 68px;
   }
 
-  .spacer {
-    margin-bottom: 10px;
+  /* Green OA */
+  .goa-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 10px 0; }
+  .goa-header img { height: 45px; image-rendering: pixelated; }
+  .goa-title { font-size: 14px; color: #98ff6a; text-align: center; }
+
+  /* Couperin */
+  .couperin-header { display: flex; flex-direction: column; align-items: center; padding: 10px 10px 0; gap: 2px; }
+  .couperin-header img.big { height: 55px; image-rendering: pixelated; }
+  .couperin-title-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .couperin-title-row img.small { height: 22px; image-rendering: pixelated; }
+  .couperin-title { font-size: 16px; color: #00ffec; }
+
+  /* badges */
+  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 10px; padding: 8px 16px; margin: 4px 50px; text-align: center; }
+  .badge-red    { border: 1px solid #ff0000; color: #ff6a6a; }
+  .badge-green  { border: 1px solid #47ff00; color: #6aff73; }
+  .badge-yellow { border: 1px solid #ff0000; color: #fff900; }
+  .badge-gold   { border: 1px solid #f4ff00; color: #feff00; }
+
+  /* corps des cartes */
+  .card-body { font-size: 10px; line-height: 1.6; margin: 12px 12px; }
+  .card-body.yellow { color: #fff1bc; }
+  .card-body.green  { color: #b5feb7; }
+  .card-body.cyan   { color: #b5fafe; }
+  .card-body.cream  { color: #fbfeb5; }
+
+  .hl-yellow { color: #fcff40; }
+  .hl-green  { color: #00ff07; }
+  .hl-red    { color: #ff6a6a; }
+  .hl-teal   { color: #98ff6a; }
+  .hl-gold   { color: #fcff40; }
+  .spacer { margin-bottom: 10px; }
+
+  /* bloc description bleu foncé en bas */
+  .description-block {
+    background: #0a1a3a; border-radius: 16px; margin: 24px 12px 0;
+    padding: 16px; font-size: 10px; color: #9b9b9b; line-height: 1.7;
   }
 </style>
 </head>
-
 <body>
-
-<!-- Lucie -->
-<div class="card card-yellow">
-
-  <div class="lucie-header">
-    <img src="assets/Lucie.gif" alt="Lucie">
-    <div class="lucie-name">Lucie</div>
-  </div>
-
-  <div class="card-body" style="margin-top:10px;">
-    Cette ampoule mutante pleine d'idées cherche à diffuser ses articles au plus grand nombre de lecteurs
-    et pour cela elle doit avoir au moins un article en accès ouvert (OA). En évitant les éditeurs prédateurs,
-    elle doit déposer ses articles soit sur les archives ouvertes soit les publier avec les éditeurs en accès
-    ouvert. Mais attention, certaines pratiques en accès ouvert peuvent lui coûter cher (littéralement, mais pas que…).
-  </div>
-
-  <div class="spacer"></div>
-
-</div>
-
-</body>
-</html>
