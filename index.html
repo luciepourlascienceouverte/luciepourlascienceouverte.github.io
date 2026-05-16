@@ -8,7 +8,6 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   a { text-decoration: none; }
-
   body {
     font-family: 'Space Mono', monospace;
     background-color: #000;
@@ -18,171 +17,70 @@
     padding: 0 12px 60px;
   }
 
-  /* ── HERO ── */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50px;
-    text-align: center;
-  }
-  .hero-char {
-    width: 46px;
-    image-rendering: pixelated;
-    margin-bottom: -30px;
-    position: relative;
-    z-index: 1;
-  }
-  .hero-title {
-    font-size: 24px;
-    color: #ffd000;
-    margin: 0 0 0 10px;
-    align-self: flex-start;
-  }
-  .hero-sub {
-    font-size: 12px;
-    color: #fff1b5;
-    margin: 10px 0 0 25px;
-    align-self: flex-start;
-  }
+  /* HERO */
+  .hero { display: flex; flex-direction: column; padding-top: 50px; }
+  .hero-char { width: 46px; image-rendering: pixelated; margin-bottom: -30px; margin-left: 10px; position: relative; z-index: 1; }
+  .hero-title { font-size: 24px; color: #ffd000; margin: 0 0 0 10px; }
+  .hero-sub { font-size: 12px; color: #fff1b5; margin: 10px 0 0 25px; }
 
-  /* ── BOUTON JOUER ── */
+  /* BOUTON */
   .play-btn {
-    display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 16px;
-    color: #00ffd0;
-    border: 2px solid #00ffd0;
-    border-radius: 50px;
-    padding: 12px 40px;
-    text-decoration: none;
-    text-align: center;
-    margin: 30px auto 0;
-    width: fit-content;
+    display: block; font-family: 'Space Mono', monospace; font-size: 16px;
+    color: #00ffd0; border: 2px solid #00ffd0; border-radius: 50px;
+    padding: 12px 40px; text-decoration: none; text-align: center;
+    margin: 30px auto 0; width: fit-content;
   }
 
-  /* ── DESCRIPTION ── */
-  .description {
-    font-size: 10px;
-    color: #9b9b9b;
-    line-height: 1.6;
-    margin: 20px 0;
-    padding: 10px;
-  }
+  /* SECTION TITRE */
+  .section-title { font-size: 16px; color: #ffcb00; margin: 24px 10px 16px; }
 
-  /* ── SECTION TITRE ── */
-  .section-title {
-    font-size: 16px;
-    color: #ffcb00;
-    margin: 16px 10px;
-  }
+  /* CARTES */
+  .card { border-radius: 25px; margin: 12px 12px; padding: 1px 0; overflow: visible; }
+  .card-yellow { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
+  .card-red    { background: rgba(198,13,13,0.28);  border: 1px solid #ff0000; }
+  .card-green  { background: rgba(91,198,13,0.28);  border: 1px solid #2bff00; }
+  .card-teal   { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
+  .card-gold   { background: rgba(146,114,8,0.28);  border: 1px solid #ffe500; }
+  .card-cyan   { background: rgba(8,133,146,0.28);  border: 1px solid #00fdff; }
+  .card-lime   { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
 
-  /* ── CARTES ── */
-  .card {
-    border-radius: 25px;
-    margin: 12px 12px;
-    padding: 1px 0;
-  }
-  .card-yellow  { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
-  .card-red     { background: rgba(198,13,13,0.28);  border: 1px solid #ff0000; }
-  .card-green   { background: rgba(91,198,13,0.28);  border: 1px solid #2bff00; }
-  .card-teal    { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
-  .card-gold    { background: rgba(146,114,8,0.28);  border: 1px solid #ffe500; }
-  .card-cyan    { background: rgba(8,133,146,0.28);  border: 1px solid #00fdff; }
-  .card-lime    { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
-
-  .card-title {
-    font-size: 16px;
-    padding: 10px 10px 0;
-    text-align: center;
-  }
+  .card-title { font-size: 16px; padding: 8px 10px 0; text-align: center; }
   .card-title.red    { color: #ff6a6a; }
   .card-title.green  { color: #98ff6a; }
   .card-title.yellow { color: #fff16f; }
   .card-title.cyan   { color: #00ffec; }
   .card-title.gold   { color: #f7ff00; }
 
-  /* sprites par défaut : centrés */
-  .card-sprites {
-    display: flex;
-    gap: 4px;
-    padding: 4px 10px;
-    justify-content: center;
-    align-items: center;
-  }
-  .card-sprites img {
-    height: 45px;
-    image-rendering: pixelated;
-  }
-  .card-sprites img.wide { height: 45px; width: auto; }
+  /* sprites centrés */
+  .card-sprites { display: flex; gap: 4px; padding: 8px 10px 0; justify-content: center; align-items: center; }
+  .card-sprites img { height: 45px; image-rendering: pixelated; }
 
-  /* licences : image au-dessus du label */
-  .licence-row {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    padding: 8px 10px 0;
-  }
-  .licence-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    font-size: 9px;
-    color: #fff16f;
-  }
-  .licence-item span { order: -1; } /* label au-dessus */
-  .licence-item img { height: 45px; image-rendering: pixelated; }
+  /* Lucie : déborde en haut, sprite à gauche du nom */
+  .lucie-header { display: flex; align-items: center; padding: 0 10px 0 14px; margin-top: -40px; }
+  .lucie-header img { width: 45px; image-rendering: pixelated; flex-shrink: 0; }
+  .lucie-name { font-size: 16px; color: #fff16f; margin-left: 10px; }
 
-  /* goa : sprite gauche + titre + sprite droit */
-  .goa-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 10px 0;
-  }
+  /* Green OA */
+  .goa-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 10px 0; }
   .goa-header img { height: 45px; image-rendering: pixelated; }
   .goa-title { font-size: 14px; color: #98ff6a; text-align: center; }
 
-  /* couperin : grosse boule centrée, puis titre flanqué des 2 petites */
-  .couperin-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 10px 0;
-    gap: 6px;
-  }
-  .couperin-header img.big { height: 60px; image-rendering: pixelated; }
-  .couperin-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-  .couperin-title-row img.small { height: 25px; image-rendering: pixelated; }
+  /* Couperin */
+  .couperin-header { display: flex; flex-direction: column; align-items: center; padding: 10px 10px 0; gap: 2px; }
+  .couperin-header img.big { height: 55px; image-rendering: pixelated; }
+  .couperin-title-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .couperin-title-row img.small { height: 22px; image-rendering: pixelated; }
   .couperin-title { font-size: 16px; color: #00ffec; }
 
-  .badge {
-    display: block;
-    background: rgba(38,38,38,0.49);
-    border-radius: 25px;
-    font-size: 10px;
-    padding: 8px 16px;
-    margin: 4px 50px;
-    text-align: center;
-  }
+  /* badges */
+  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 10px; padding: 8px 16px; margin: 4px 50px; text-align: center; }
   .badge-red    { border: 1px solid #ff0000; color: #ff6a6a; }
   .badge-green  { border: 1px solid #47ff00; color: #6aff73; }
   .badge-yellow { border: 1px solid #ff0000; color: #fff900; }
   .badge-gold   { border: 1px solid #f4ff00; color: #feff00; }
 
-  .card-body {
-    font-size: 10px;
-    line-height: 1.6;
-    margin: 12px 12px;
-    padding: 0;
-  }
+  /* corps des cartes */
+  .card-body { font-size: 10px; line-height: 1.6; margin: 12px 12px; }
   .card-body.yellow { color: #fff1bc; }
   .card-body.green  { color: #b5feb7; }
   .card-body.cyan   { color: #b5fafe; }
@@ -193,13 +91,17 @@
   .hl-red    { color: #ff6a6a; }
   .hl-teal   { color: #98ff6a; }
   .hl-gold   { color: #fcff40; }
-
   .spacer { margin-bottom: 10px; }
+
+  /* bloc description bleu foncé en bas */
+  .description-block {
+    background: #0a1a3a; border-radius: 16px; margin: 24px 12px 0;
+    padding: 16px; font-size: 10px; color: #9b9b9b; line-height: 1.7;
+  }
 </style>
 </head>
 <body>
 
-<!-- Fond étoilé -->
 <script>
 window.addEventListener('load', function () {
   var canvas = document.createElement('canvas');
@@ -239,24 +141,16 @@ window.addEventListener('load', function () {
 
 <a class="play-btn" href="#">jouer</a>
 
-<!-- DESCRIPTION -->
-<div class="description">
-  Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte,
-  le jeu « Lucie : une course pour la science ouverte » se veut une ressource éducative libre (REL) et évolutive.
-  Inspiré des mécanismes de « Chrome Dino », le jeu présente les personnages emblématiques de la science ouverte
-  en France : les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès
-  ouvert avec les deux types de licence (CC BY et CC BY NC-ND), le modèle économique des APCs, ainsi que les archives
-  ouvertes (Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin et SciHub.
-</div>
-
 <!-- PERSONNAGES -->
 <div class="section-title">Les personnages</div>
 
 <!-- Lucie -->
-<div class="card card-yellow">
-  <div class="card-title yellow">Lucie</div>
-  <div class="card-sprites"><img src="assets/Lucie.gif" alt="Lucie"></div>
-  <div class="card-body yellow">
+<div class="card card-yellow" style="margin-top:50px;">
+  <div class="lucie-header">
+    <img src="assets/Lucie.gif" alt="Lucie">
+    <div class="lucie-name">Lucie</div>
+  </div>
+  <div class="card-body yellow" style="margin-top:10px;">
     Cette ampoule mutante pleine d'idées cherche à diffuser ses articles au plus grand nombre de lecteurs
     et pour cela elle doit avoir au moins un article en accès ouvert (OA). En évitant les éditeurs prédateurs,
     elle doit déposer ses articles soit sur les archives ouvertes soit les publier avec les éditeurs en accès
@@ -267,12 +161,12 @@ window.addEventListener('load', function () {
 
 <!-- Éditeurs prédateurs -->
 <div class="card card-red">
-  <div class="card-title red">Les éditeurs prédateurs</div>
   <div class="card-sprites">
     <img src="assets/pub_e.gif" alt=""><img src="assets/pub_w.gif" alt="">
     <img src="assets/pub_t.gif" alt=""><img src="assets/pub_s.gif" alt="">
     <img src="assets/pub_sa.gif" alt="">
   </div>
+  <div class="card-title red">Les éditeurs prédateurs</div>
   <span class="badge badge-red">-1 article / -30 lecteurs</span>
   <div class="card-body yellow">
     Les « Big Five » de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie.
@@ -286,13 +180,16 @@ window.addEventListener('load', function () {
 
 <!-- Éditeurs OA -->
 <div class="card card-green">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:10px 40px 0; justify-items:center;">
-    <img src="assets/ccby.gif"   style="height:45px; image-rendering:pixelated;">
-    <img src="assets/nc-nd.gif"  style="height:45px; image-rendering:pixelated;">
-    <img src="assets/unlock.gif" style="height:45px; image-rendering:pixelated;">
-    <img src="assets/unlock.gif" style="height:45px; image-rendering:pixelated;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px 50px 0;justify-items:center;">
+    <img src="assets/ccby.gif"   style="height:28px;image-rendering:pixelated;">
+    <img src="assets/nc-nd.gif"  style="height:28px;image-rendering:pixelated;">
+    <img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;">
+    <img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;">
   </div>
   <div class="card-title green">Les éditeurs en accès ouvert (OA) &amp; licences</div>
+  <span class="badge badge-green">+1 article / +50 lecteurs</span>
+  <span class="badge badge-green">CC BY : bouclier (7s)</span>
+  <span class="badge badge-yellow"><span class="hl-yellow">CC BY NC-ND</span> : <span class="hl-red">-20 lecteurs</span></span>
   <div class="card-body green">
     Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous
     <span class="hl-yellow">CC-BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale
@@ -326,11 +223,11 @@ window.addEventListener('load', function () {
 
 <!-- APCs -->
 <div class="card card-gold">
-  <div class="card-sprites" style="flex-direction: column; align-items: center; gap: 0;">
-    <img src="assets/apc_text.gif" alt="" style="height:40px;">
-    <img src="assets/oa-apc.gif" alt="" style="height:55px;">
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:8px;">
+    <img src="assets/apc_text.gif" alt="" style="height:38px;image-rendering:pixelated;">
+    <img src="assets/oa-apc.gif"   alt="" style="height:55px;image-rendering:pixelated;">
   </div>
-  <div class="card-title cyan">L'édition ouverte et les frais de publication (APCs)</div>
+  <div class="card-title yellow">L'édition ouverte et les frais de publication (APCs)</div>
   <span class="badge badge-green">+1 article / +50 lecteurs</span>
   <span class="badge badge-yellow">APCs : archives OA et Green OA disparaissent / + de monstres (7s)</span>
   <div class="card-body green">
@@ -345,11 +242,12 @@ window.addEventListener('load', function () {
 
 <!-- Archives ouvertes -->
 <div class="card card-cyan">
-  <div class="card-title cyan">Les archives ouvertes</div>
   <div class="card-sprites">
-    <img src="assets/arXiv.gif" alt=""><img src="assets/archive_HAL.gif" alt="">
+    <img src="assets/arXiv.gif" alt="">
+    <img src="assets/archive_HAL.gif" alt="">
     <img src="assets/archive_zenodo.gif" alt="">
   </div>
+  <div class="card-title cyan">Les archives ouvertes</div>
   <span class="badge badge-green">+1 article / +50 lecteurs</span>
   <div class="card-body cyan">
     Ces « bibliothèques numériques » garantissent un accès libre aux articles. Elles sont financées
@@ -384,8 +282,10 @@ window.addEventListener('load', function () {
 
 <!-- SciHub -->
 <div class="card card-lime">
+  <div class="card-sprites">
+    <img src="assets/Crow.gif" alt="">
+  </div>
   <div class="card-title gold">SciHub &amp; Cie</div>
-  <div class="card-sprites"><img src="assets/Crow.gif" alt=""></div>
   <span class="badge badge-gold">+10 lecteurs / + de monstres (5s)</span>
   <div class="card-body cream">
     SciHub est un site qui arrive à déjouer les <i>paywalls</i> des grands éditeurs et donner accès
@@ -397,6 +297,17 @@ window.addEventListener('load', function () {
     spécialisent parfois dans une ou plusieurs disciplines.
   </div>
   <div class="spacer"></div>
+</div>
+
+<!-- DESCRIPTION en bas dans un bloc bleu foncé -->
+<div class="description-block">
+  Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte,
+  le jeu « Lucie : une course pour la science ouverte » se veut une ressource éducative libre (REL) et évolutive.
+  Inspiré des mécanismes de « Chrome Dino », le jeu présente les personnages emblématiques de la science ouverte
+  en France : les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès
+  ouvert avec les deux types de licence (CC BY et CC BY NC-ND), le modèle économique des APCs, ainsi que les archives
+  ouvertes (Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin et SciHub, site illégal de
+  téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.
 </div>
 
 </body>
