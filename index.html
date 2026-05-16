@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucie — une course pour la science ouverte</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  a { text-decoration: none; }
+
+  body {
+    font-family: 'Space Mono', monospace;
+    background-color: #000;
+    color: #fff;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 12px 60px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    text-align: center;
+  }
+  .hero-char {
+    width: 46px;
+    image-rendering: pixelated;
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-title {
+    font-size: 24px;
+    color: #ffd000;
+    margin: 0 0 0 10px;
+    align-self: flex-start;
+  }
+  .hero-sub {
+    font-size: 12px;
+    color: #fff1b5;
+    margin: 10px 0 0 25px;
+    align-self: flex-start;
+  }
+
+  /* ── BOUTON JOUER ── */
+  .play-btn {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    color: #00ffd0;
+    border: 2px solid #00ffd0;
+    border-radius: 50px;
+    padding: 12px 40px;
+    text-decoration: none;
+    text-align: center;
+    margin: 30px auto 0;
+    width: fit-content;
+  }
+
+  /* ── DESCRIPTION ── */
+  .description {
+    font-size: 10px;
+    color: #9b9b9b;
+    line-height: 1.6;
+    margin: 20px 0;
+    padding: 10px;
+  }
+
+  /* ── SECTION TITRE ── */
+  .section-title {
+    font-size: 16px;
+    color: #ffcb00;
+    margin: 16px 10px;
+  }
+
+  /* ── CARTES ── */
+  .card {
+    border-radius: 25px;
+    margin: 12px 12px;
+    padding: 1px 0;
+  }
+  .card-yellow  { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
+  .card-red     { background: rgba(198,13,13,0.28);  border: 1px solid #ff0000; }
+  .card-green   { background: rgba(91,198,13,0.28);  border: 1px solid #2bff00; }
+  .card-teal    { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
+  .card-gold    { background: rgba(146,114,8,0.28);  border: 1px solid #ffe500; }
+  .card-cyan    { background: rgba(8,133,146,0.28);  border: 1px solid #00fdff; }
+  .card-lime    { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
+
+  .card-title {
+    font-size: 16px;
+    padding: 10px 10px 0;
+  }
+  .card-title.red    { color: #ff6a6a; }
+  .card-title.green  { color: #98ff6a; }
+  .card-title.yellow { color: #fff16f; }
+  .card-title.cyan   { color: #00ffec; }
+  .card-title.gold   { color: #f7ff00; }
+
+  .card-sprites {
+    display: flex;
+    gap: 4px;
+    padding: 4px 10px;
+  }
+  .card-sprites img {
+    height: 45px;
+    image-rendering: pixelated;
+  }
+  .card-sprites img.wide { height: 45px; width: auto; }
+
+  .badge {
+    display: block;
+    background: rgba(38,38,38,0.49);
+    border-radius: 25px;
+    font-size: 10px;
+    padding: 8px 16px;
+    margin: 4px 50px;
+    text-align: center;
+  }
+  .badge-red    { border: 1px solid #ff0000; color: #ff6a6a; }
+  .badge-green  { border: 1px solid #47ff00; color: #6aff73; }
+  .badge-yellow { border: 1px solid #ff0000; color: #fff900; }
+  .badge-gold   { border: 1px solid #f4ff00; color: #feff00; }
+
+  .card-body {
+    font-size: 10px;
+    line-height: 1.6;
+    margin: 12px 12px;
+    padding: 0;
+  }
+  .card-body.yellow { color: #fff1bc; }
+  .card-body.green  { color: #b5feb7; }
+  .card-body.cyan   { color: #b5fafe; }
+  .card-body.cream  { color: #fbfeb5; }
+
+  .hl-yellow { color: #fcff40; }
+  .hl-green  { color: #00ff07; }
+  .hl-red    { color: #ff6a6a; }
+  .hl-teal   { color: #98ff6a; }
+  .hl-gold   { color: #fcff40; }
+
+  .spacer { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<!-- Fond étoilé -->
+<script>
+window.addEventListener('load', function () {
+  var canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+  document.body.appendChild(canvas);
+  var ctx = canvas.getContext('2d');
+  var stars = [];
+  function makeStars() {
+    stars = Array.from({ length: 120 }, function() {
+      return { x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.4+0.3, tw: Math.random()*Math.PI*2, ts: Math.random()*1.2+0.3 };
+    });
+  }
+  function resize() { canvas.width=window.innerWidth; canvas.height=window.innerHeight; makeStars(); }
+  window.addEventListener('resize', resize); resize();
+  var lastTime = 0;
+  function loop(ts) {
+    var dt = Math.min((ts-lastTime)/1000, 0.05); lastTime = ts;
+    stars.forEach(function(s) { s.tw += dt*s.ts; });
+    ctx.fillStyle = '#1a1040'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    stars.forEach(function(s) {
+      if (Math.sin(s.tw) <= 0 && s.r < 0.8) return;
+      ctx.fillStyle = s.r < 0.6 ? '#8899cc' : s.r < 1.1 ? '#c8d4ff' : '#f0f0f0';
+      ctx.fillRect(Math.floor(s.x), Math.floor(s.y), s.r < 1.2 ? 1 : 2, s.r < 1.2 ? 1 : 2);
+    });
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+});
+</script>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-char" src="assets/luci_idle.png" alt="Lucie">
+  <div class="hero-title">Lucie</div>
+  <div class="hero-sub">une course pour la science ouverte</div>
+</div>
+
+<a class="play-btn" href="#">jouer</a>
+
+<!-- DESCRIPTION -->
+<div class="description">
+  Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte,
+  le jeu « Lucie : une course pour la science ouverte » se veut une ressource éducative libre (REL) et évolutive.
+  Inspiré des mécanismes de « Chrome Dino », le jeu présente les personnages emblématiques de la science ouverte
+  en France : les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès
+  ouvert avec les deux types de licence (CC BY et CC BY NC-ND), le modèle économique des APCs, ainsi que les archives
+  ouvertes (Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin et SciHub.
+</div>
+
+<!-- PERSONNAGES -->
+<div class="section-title">Les personnages</div>
+
+<!-- Lucie -->
+<div class="card card-yellow">
+  <div class="card-title yellow">Lucie</div>
+  <div class="card-sprites"><img src="assets/Lucie.gif" alt="Lucie"></div>
+  <div class="card-body yellow">
+    Cette ampoule mutante pleine d'idées cherche à diffuser ses articles au plus grand nombre de lecteurs
+    et pour cela elle doit avoir au moins un article en accès ouvert (OA). En évitant les éditeurs prédateurs,
+    elle doit déposer ses articles soit sur les archives ouvertes soit les publier avec les éditeurs en accès
+    ouvert. Mais attention, certaines pratiques en accès ouvert peuvent lui coûter cher (littéralement, mais pas que…).
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- Éditeurs prédateurs -->
+<div class="card card-red">
+  <div class="card-title red">Les éditeurs prédateurs</div>
+  <div class="card-sprites">
+    <img src="assets/pub_e.gif" alt=""><img src="assets/pub_w.gif" alt="">
+    <img src="assets/pub_t.gif" alt=""><img src="assets/pub_s.gif" alt="">
+    <img src="assets/pub_sa.gif" alt="">
+  </div>
+  <span class="badge badge-red">-1 article / -30 lecteurs</span>
+  <div class="card-body yellow">
+    Les « Big Five » de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie.
+    Avec une marge de profit qui peut dépasser les 40%, ils ont tout intérêt en que l'accès ouvert ne
+    se développe pas ou, mieux, qu'il se développe, mais à leur manière (tiens, les APCs…).
+    La faune de l'édition scientifique compte aussi avec de plus petits éditeurs (souvent associatifs)
+    qui pourraient disparaître s'ils se mettaient à éditer en accès ouvert.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- Éditeurs OA -->
+<div class="card card-green">
+  <div class="card-title green">Les éditeurs en accès ouvert (OA) &amp; licences</div>
+  <div class="card-sprites">
+    <img src="assets/unlock.gif" alt=""><img src="assets/unlock.gif" alt="">
+    <img src="assets/ccby.gif" alt="" class="wide"><img src="assets/nc-nd.gif" alt="" class="wide">
+  </div>
+  <span class="badge badge-green">+1 article / +50 lecteurs</span>
+  <span class="badge badge-green">CC BY : bouclier (7s)</span>
+  <span class="badge badge-yellow"><span class="hl-yellow">CC BY NC-ND</span> : <span class="hl-red">-20 lecteurs</span></span>
+  <div class="card-body green">
+    Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous
+    <span class="hl-yellow">CC-BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale
+    et pas d'œuvre dérivée) soit sous <span class="hl-green">CC-BY</span> (il suffit d'indiquer l'auteur).<br><br>
+    La licence <span class="hl-yellow">CC-BY-NC-ND</span> ampute une (grosse) partie des droits de l'auteur
+    et restreint la diffusion de son travail : adieu aux traductions, aux ressources éducatives et d'autres
+    travaux dérivés. En plus, si la structure éditrice venait à disparaître, bon courage pour rééditer l'article…
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- Green OA -->
+<div class="card card-teal">
+  <div class="card-title green">Le Green Open Access</div>
+  <div class="card-sprites">
+    <img src="assets/goa.gif" alt=""><img src="assets/goa.gif" alt="">
+  </div>
+  <span class="badge badge-green">+1 article / +25 lecteurs</span>
+  <span class="badge badge-yellow"><span class="hl-yellow">CC BY NC-ND</span> : <span class="hl-red">-20 lecteurs</span></span>
+  <div class="card-body green">
+    C'est ce qui nous reste à tenter quand on publie chez un éditeur en « accès fermé ».
+    Lucie dépose sur une archive ouverte la version originale de son manuscrit, la prépublication
+    ou <i>preprint</i> (sans les corrections reçues à la suite de l'évaluation par les pairs).
+    Quelques années après, elle peut mettre en ligne la version corrigée — mais sans la mise en page
+    de l'éditeur. Et bien sûr, <i>bye bye</i> au <span class="hl-teal">CC-BY</span> :
+    les éditeurs imposent la <span class="hl-gold">CC-BY-NC-ND</span>.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- APCs -->
+<div class="card card-gold">
+  <div class="card-title cyan">L'édition ouverte et les frais de publication (APCs)</div>
+  <div class="card-sprites">
+    <img src="assets/oa-apc.gif" alt=""><img src="assets/apc_text.gif" alt="" class="wide">
+  </div>
+  <span class="badge badge-green">+1 article / +50 lecteurs</span>
+  <span class="badge badge-yellow">APCs : archives OA et Green OA disparaissent / + de monstres (7s)</span>
+  <div class="card-body green">
+    En gros, c'est traître. Plutôt que de faire payer le lecteur, on fait payer l'auteur ou les
+    institutions de recherche. Ce système peut occasionner d'importantes inégalités (qui paie plus,
+    publie plus et s'achète une autorité scientifique). Plutôt que bander les yeux du lecteur avec
+    une <i>paywall</i>, on préfère museler les auteurs qui ne peuvent pas payer et, de prime, on
+    s'affiche avec un label <i>Open Access</i>.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- Archives ouvertes -->
+<div class="card card-cyan">
+  <div class="card-title cyan">Les archives ouvertes</div>
+  <div class="card-sprites">
+    <img src="assets/arXiv.gif" alt=""><img src="assets/archive_HAL.gif" alt="">
+    <img src="assets/archive_zenodo.gif" alt="">
+  </div>
+  <span class="badge badge-green">+1 article / +50 lecteurs</span>
+  <div class="card-body cyan">
+    Ces « bibliothèques numériques » garantissent un accès libre aux articles. Elles sont financées
+    par des organismes nationaux (HAL), européens (Zenodo) ou des organisations à but non lucratif (arXiv).
+    Le dépôt est gratuit mais soumis à certaines conditions : les auteurs doivent s'enregistrer, parfois
+    l'affiliation à une institution de recherche est requise (Zenodo est le plus « chill » par rapport à ça)
+    et le contenu doit être adapté.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- Couperin -->
+<div class="card card-cyan">
+  <div class="card-title cyan">Couperin</div>
+  <div class="card-sprites">
+    <img src="assets/Couperin.gif" alt="">
+    <img src="assets/immunitecouperin.gif" alt="">
+    <img src="assets/immunitecouperin.gif" alt="">
+  </div>
+  <span class="badge badge-green">+1 article / bouclier (2s)</span>
+  <div class="card-body cyan">
+    Couperin est un consortium sous la forme d'association loi 1901 qui mobilise les établissements
+    de l'Enseignement supérieur et de la Recherche français. C'est un sacré bouclier contre les APCs,
+    car il permet aux chercheurs des établissements associés d'en être exonérés. Couperin est financé
+    par les cotisations de ces derniers ainsi que par des subventions du ministère de l'Enseignement
+    supérieur et de la Recherche.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- SciHub -->
+<div class="card card-lime">
+  <div class="card-title gold">SciHub &amp; Cie</div>
+  <div class="card-sprites"><img src="assets/Crow.gif" alt=""></div>
+  <span class="badge badge-gold">+10 lecteurs / + de monstres (5s)</span>
+  <div class="card-body cream">
+    SciHub est un site qui arrive à déjouer les <i>paywalls</i> des grands éditeurs et donner accès
+    illégalement aux articles publiés chez eux. Si ce site illégal est un personnage dans ce jeu —
+    il est vilain, répétons-le sagement — c'est parce qu'il a bousculé l'ensemble des acteurs de la
+    science ouverte : il diffuse si bien les articles des grands éditeurs que publier en accès ouvert
+    n'apporterait désormais guère d'avantages concernant la visibilité des articles…<br><br>
+    SciHub est l'icône des « shadow libraries » : des bibliothèques numériques illégales qui se
+    spécialisent parfois dans une ou plusieurs disciplines.
+  </div>
+  <div class="spacer"></div>
+</div>
+
+</body>
+</html>
