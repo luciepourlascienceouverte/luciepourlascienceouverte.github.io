@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucie : une course pour la science ouverte</title>
+<title>Lucie — une course pour la science ouverte</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,12 +41,15 @@
   .couperin-title-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
   .couperin-title-row img.small { height: 22px; image-rendering: pixelated; }
   .couperin-title { font-size: 16px; color: #00ffec; }
-  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 9px; padding: 8px 14px; margin: 4px 50px; text-align: center; }
+  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 8.5px; padding: 7px 12px; margin: 4px 50px; text-align: center; line-height: 1.3; }
   .badge-red { border: 1px solid #ff0000; color: #ff6a6a; } .badge-green { border: 1px solid #47ff00; color: #6aff73; } .badge-yellow { border: 1px solid #ff0000; color: #fff900; } .badge-gold { border: 1px solid #f4ff00; color: #feff00; }
   .card-body { font-size: 10px; line-height: 1.6; margin: 16px 18px; }
   .card-body.yellow { color: #fff1bc; } .card-body.green { color: #b5feb7; } .card-body.cyan { color: #b5fafe; } .card-body.cream { color: #fbfeb5; } .card-body.gray { color: #cccccc; }
   .hl-yellow { color: #fcff40; } .hl-green { color: #00ff07; } .hl-red { color: #ff6a6a; } .hl-teal { color: #98ff6a; } .hl-gold { color: #fcff40; }
   .spacer { margin-bottom: 10px; }
+  .boma-footer { display: flex; flex-direction: column; align-items: center; margin-top: 16px; }
+  .boma-footer img { height: 60px; image-rendering: pixelated; margin-bottom: 4px; }
+  .boma-footer .tagline { font-size: 9px; color: #fff; text-align: center; line-height: 1.2; }
 </style>
 </head>
 <body>
@@ -112,7 +115,7 @@ window.addEventListener('load', function () {
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
   <span class="badge badge-green">CC&nbsp;BY&nbsp;:&nbsp;+25&nbsp;lecteurs&nbsp;/&nbsp;bouclier&nbsp;(7s)</span>
   <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY-NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
-  <div class="card-body green">Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale et pas d'œuvre dérivée) soit sous <span class="hl-green">CC-BY</span> (il suffit d'indiquer l'auteur). La licence <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> ampute une (grosse) partie des droits de l'auteur et restreint la diffusion de son travail&nbsp;: adieu aux traductions, aux ressources éducatives et d'autres travaux dérivés qui pourraient en découler, et en bien des cas, à la redistribution (de fait, certaines plateformes qui ont des activités commerciales — sans nécessairement avoir un but lucratif — sont découragées, car même des bannières publicitaires sur un site distribuant l'article gratuitement poseraient problème sous cette licence&nbsp;; et on oublie bien évidemment Academia.edu, ResearchGate etc.). En plus, si la structure éditrice venait à disparaître, bon courage pour rééditer l'article…</div>
+  <div class="card-body green">Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale et pas d'œuvre dérivée) soit sous <span class="hl-green">CC&nbsp;BY</span> (il suffit d'indiquer l'auteur). La licence <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> ampute une (grosse) partie des droits de l'auteur et restreint la diffusion de son travail&nbsp;: adieu aux traductions, aux ressources éducatives et d'autres travaux dérivés qui pourraient en découler, et en bien des cas, à la redistribution (de fait, certaines plateformes qui ont des activités commerciales — sans nécessairement avoir un but lucratif — sont découragées, car même des bannières publicitaires sur un site distribuant l'article gratuitement poseraient problème sous cette licence&nbsp;; et on oublie bien évidemment Academia.edu, ResearchGate etc.). En plus, si la structure éditrice venait à disparaître, bon courage pour rééditer l'article…</div>
   <div class="spacer"></div>
 </div>
 
@@ -120,7 +123,7 @@ window.addEventListener('load', function () {
   <div class="goa-header"><img src="assets/goa.gif"><div class="goa-title">Le Green Open Access</div><img src="assets/goa.gif"></div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+25&nbsp;lecteurs</span>
   <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY-NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
-  <div class="card-body green">C'est ce qui nous reste à tenter quand on publie chez un éditeur en «&nbsp;accès fermé&nbsp;» (si ce dernier nous l'accorde, dans un acte de clémence envers le pauvre chercheur désormais à sa merci). Lucie dépose sur une archive ouverte la version originale de son manuscrit, la prépublication ou <i>preprint</i> (notamment sans intégrer les suggestions/corrections qu'elle aurait reçues à la suite de l'évaluation par les pairs – qui l'ont fait certainement de manière bénévole, mais passons) et quelques années après la publication par l'éditeur, notre protagoniste peut enfin mettre en ligne la version corrigée de son article (mais en général sans la mise en page faite par l'éditeur, faut pas trop demander non plus…). Et, bien sûr, <i>bye bye</i> au <span class="hl-teal">CC-BY</span>&nbsp;: les éditeurs imposent que ces versions soient diffusées sous <span class="hl-gold">CC&nbsp;BY-NC-ND</span>. Pas question de produire des travaux dérivés (traductions, ressources éducatives, graphiques, etc.) ou encore pire, d'autoriser une quelconque utilisation commerciale (qui pourrait vraiment «&nbsp;booster&nbsp;» la diffusion des recherches, voir ci-dessus).</div>
+  <div class="card-body green">C'est ce qui nous reste à tenter quand on publie chez un éditeur en «&nbsp;accès fermé&nbsp;» (si ce dernier nous l'accorde, dans un acte de clémence envers le pauvre chercheur désormais à sa merci). Lucie dépose sur une archive ouverte la version originale de son manuscrit, la prépublication ou <i>preprint</i> (notamment sans intégrer les suggestions/corrections qu'elle aurait reçues à la suite de l'évaluation par les pairs – qui l'ont fait certainement de manière bénévole, mais passons) et quelques années après la publication par l'éditeur, notre protagoniste peut enfin mettre en ligne la version corrigée de son article (mais en général sans la mise en page faite par l'éditeur, faut pas trop demander non plus…). Et, bien sûr, <i>bye bye</i> au <span class="hl-teal">CC&nbsp;BY</span>&nbsp;: les éditeurs imposent que ces versions soient diffusées sous <span class="hl-gold">CC&nbsp;BY-NC-ND</span>. Pas question de produire des travaux dérivés (traductions, ressources éducatives, graphiques, etc.) ou encore pire, d'autoriser une quelconque utilisation commerciale (qui pourrait vraiment «&nbsp;booster&nbsp;» la diffusion des recherches, voir ci-dessus).</div>
   <div class="spacer"></div>
 </div>
 
@@ -158,7 +161,12 @@ window.addEventListener('load', function () {
 
 <div class="card card-gray">
   <div class="card-title gray">À propos du jeu</div>
-  <div class="card-body gray">Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte, le jeu «&nbsp;Lucie&nbsp;: une course pour la science ouverte&nbsp;» se veut une ressource éducative libre (REL) et évolutive. Inspiré des mécanismes de «&nbsp;Chrome Dino&nbsp;», le jeu présente les personnages emblématiques de la science ouverte en France&nbsp;: les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès ouvert avec les deux types de licence de distribution les plus dichotomiques du spectre CC-BY (CC&nbsp;BY et CC&nbsp;BY-NC-ND) et le modèle économique des «&nbsp;APCs&nbsp;» (<i>article processing charges</i> [frais de publication]), ainsi que les archives ouvertes (représentées par Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin, qui négocie avec les grands éditeurs pour les établissements de l'Enseignement supérieur et de la Recherche français, et SciHub, site illégal de téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.</div>
+  <div class="card-body gray">Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte, le jeu «&nbsp;Lucie&nbsp;: une course pour la science ouverte&nbsp;» se veut une ressource éducative libre (REL) et évolutive. Inspiré des mécanismes de «&nbsp;Chrome Dino&nbsp;», le jeu présente les personnages emblématiques de la science ouverte en France&nbsp;: les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès ouvert avec les deux types de licence de distribution les plus dichotomiques du spectre CC&nbsp;BY (CC&nbsp;BY et CC&nbsp;BY-NC-ND) et le modèle économique des «&nbsp;APCs&nbsp;» (<i>article processing charges</i> [frais de publication]), ainsi que les archives ouvertes (représentées par Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin, qui négocie avec les grands éditeurs pour les établissements de l'Enseignement supérieur et de la Recherche français, et SciHub, site illégal de téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.</div>
+  <div class="boma-footer">
+    <img src="assets/BOMA.gif" alt="BOMA">
+    <div class="tagline">accès ouvert &amp; diversité, pour toujours</div>
+  </div>
+  <div class="card-body gray" style="margin-top:12px; text-align:center;">CC&nbsp;BY Edson Poiati Filho</div>
   <div class="spacer"></div>
 </div>
 
