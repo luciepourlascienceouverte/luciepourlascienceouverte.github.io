@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucie — une course pour la science ouverte</title>
+<title>Lucie : une course pour la science ouverte</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -19,13 +19,13 @@
   .section-title { font-size: 16px; color: #ffcb00; margin: 24px 10px 16px; }
   .card { border-radius: 25px; margin: 12px 12px; padding: 16px 0; overflow: visible; }
   .card-yellow { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
-  .card-red    { background: rgba(198,13,13,0.28);  border: 1px solid #ff0000; }
-  .card-green  { background: rgba(91,198,13,0.28);  border: 1px solid #2bff00; }
-  .card-teal   { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
-  .card-gold   { background: rgba(146,114,8,0.28);  border: 1px solid #ffe500; }
-  .card-cyan   { background: rgba(8,133,146,0.28);  border: 1px solid #00fdff; }
-  .card-lime   { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
-  .card-gray   { background: rgba(100,100,100,0.28); border: 1px solid #888888; }
+  .card-red { background: rgba(198,13,13,0.28); border: 1px solid #ff0000; }
+  .card-green { background: rgba(91,198,13,0.28); border: 1px solid #2bff00; }
+  .card-teal { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
+  .card-gold { background: rgba(146,114,8,0.28); border: 1px solid #ffe500; }
+  .card-cyan { background: rgba(8,133,146,0.28); border: 1px solid #00fdff; }
+  .card-lime { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
+  .card-gray { background: rgba(100,100,100,0.28); border: 1px solid #888888; }
   .card-title { font-size: 16px; padding: 8px 16px 0; text-align: center; }
   .card-title.red { color: #ff6a6a; } .card-title.green { color: #98ff6a; } .card-title.yellow { color: #fff16f; } .card-title.cyan { color: #00ffec; } .card-title.gold { color: #f7ff00; } .card-title.gray { color: #cccccc; }
   .card-sprites { display: flex; gap: 4px; padding: 8px 16px 0; justify-content: center; align-items: center; }
@@ -41,7 +41,7 @@
   .couperin-title-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
   .couperin-title-row img.small { height: 22px; image-rendering: pixelated; }
   .couperin-title { font-size: 16px; color: #00ffec; }
-  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 10px; padding: 8px 16px; margin: 4px 50px; text-align: center; }
+  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 9px; padding: 8px 14px; margin: 4px 50px; text-align: center; }
   .badge-red { border: 1px solid #ff0000; color: #ff6a6a; } .badge-green { border: 1px solid #47ff00; color: #6aff73; } .badge-yellow { border: 1px solid #ff0000; color: #fff900; } .badge-gold { border: 1px solid #f4ff00; color: #feff00; }
   .card-body { font-size: 10px; line-height: 1.6; margin: 16px 18px; }
   .card-body.yellow { color: #fff1bc; } .card-body.green { color: #b5feb7; } .card-body.cyan { color: #b5fafe; } .card-body.cream { color: #fbfeb5; } .card-body.gray { color: #cccccc; }
@@ -100,27 +100,27 @@ window.addEventListener('load', function () {
 
 <div class="card card-red">
   <div class="card-sprites"><img src="assets/pub_e.gif"><img src="assets/pub_w.gif"><img src="assets/pub_t.gif"><img src="assets/pub_s.gif"><img src="assets/pub_sa.gif"></div>
-  <div class="card-title red">Les éditeurs prédateurs</div>
+  <div class="card-title red">Les éditeurs prédateurs &amp; Cie</div>
   <span class="badge badge-red">-1&nbsp;article&nbsp;/&nbsp;-30&nbsp;lecteurs</span>
-  <div class="card-body yellow">Les « Big Five » de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie. Avec une marge de profit qui peut dépasser les 40%, ils ont tout intérêt en que l'accès ouvert ne se développe pas ou, mieux, qu'il se développe, mais à leur manière (tiens, les APCs…). La faune de l'édition scientifique compte aussi avec de plus petits éditeurs (souvent associatifs) qui pourraient disparaître s'ils se mettaient à éditer en accès ouvert.</div>
+  <div class="card-body yellow">Les «&nbsp;Big Five&nbsp;» de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie. Avec une marge de profit qui peut dépasser les 40%, ils ont tout intérêt (encore littéralement, mais pas que…) en que l'accès ouvert ne se développe pas ou, mieux, qu'il se développe, mais à leur manière (tiens, les APCs…). Les enjeux sont toutefois plus complexes et ne concernent pas seulement ces cinq «&nbsp;monstres&nbsp;» de l'édition&nbsp;: en effet, la faune de l'édition scientifique compte avec de plus petits éditeurs (souvent associatifs) qui pourraient disparaître s'ils se mettaient à éditer en accès ouvert, car ils dépendent souvent de l'argent des abonnements pour fonctionner. Par ailleurs, souvent ces revenus se destinent non seulement à financer l'édition, mais aussi à l'organisation d'événements à caractère culturel et scientifique. La problématique est donc de trouver une voie qui permette à la fois de préserver la «&nbsp;bibliodiversité&nbsp;» qu'offrent ces petits éditeurs et de répandre le modèle éditorial en accès ouvert.</div>
   <div class="spacer"></div>
 </div>
 
 <div class="card card-green">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px 50px 0;justify-items:center;"><img src="assets/ccby.gif" style="height:24px;image-rendering:pixelated;"><img src="assets/nc-nd.gif" style="height:24px;image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;"></div>
-  <div class="card-title green">Les éditeurs en accès ouvert (OA) &amp; licences</div>
+  <div class="card-title green">Les éditeurs en accès ouvert et les licences de distribution</div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
-  <span class="badge badge-green">CC&nbsp;BY&nbsp;:&nbsp;bouclier&nbsp;(7s)&nbsp;/&nbsp;+25&nbsp;lecteurs</span>
-  <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY&nbsp;NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
-  <div class="card-body green">Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous <span class="hl-yellow">CC-BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale et pas d'œuvre dérivée) soit sous <span class="hl-green">CC-BY</span> (il suffit d'indiquer l'auteur).<br><br>La licence <span class="hl-yellow">CC-BY-NC-ND</span> ampute une (grosse) partie des droits de l'auteur et restreint la diffusion de son travail&nbsp;: adieu aux traductions, aux ressources éducatives et d'autres travaux dérivés. En plus, si la structure éditrice venait à disparaître, bon courage pour rééditer l'article…</div>
+  <span class="badge badge-green">CC&nbsp;BY&nbsp;:&nbsp;+25&nbsp;lecteurs&nbsp;/&nbsp;bouclier&nbsp;(7s)</span>
+  <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY-NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
+  <div class="card-body green">Les éditeurs en accès ouvert distribuent souvent leurs articles soit sous <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> (on doit indiquer l'auteur, pas d'utilisation commerciale et pas d'œuvre dérivée) soit sous <span class="hl-green">CC-BY</span> (il suffit d'indiquer l'auteur). La licence <span class="hl-yellow">CC&nbsp;BY-NC-ND</span> ampute une (grosse) partie des droits de l'auteur et restreint la diffusion de son travail&nbsp;: adieu aux traductions, aux ressources éducatives et d'autres travaux dérivés qui pourraient en découler, et en bien des cas, à la redistribution (de fait, certaines plateformes qui ont des activités commerciales — sans nécessairement avoir un but lucratif — sont découragées, car même des bannières publicitaires sur un site distribuant l'article gratuitement poseraient problème sous cette licence&nbsp;; et on oublie bien évidemment Academia.edu, ResearchGate etc.). En plus, si la structure éditrice venait à disparaître, bon courage pour rééditer l'article…</div>
   <div class="spacer"></div>
 </div>
 
 <div class="card card-teal">
   <div class="goa-header"><img src="assets/goa.gif"><div class="goa-title">Le Green Open Access</div><img src="assets/goa.gif"></div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+25&nbsp;lecteurs</span>
-  <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY&nbsp;NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
-  <div class="card-body green">C'est ce qui nous reste à tenter quand on publie chez un éditeur en «&nbsp;accès fermé&nbsp;». Lucie dépose sur une archive ouverte la version originale de son manuscrit, la prépublication ou <i>preprint</i> (sans les corrections reçues à la suite de l'évaluation par les pairs). Quelques années après, elle peut mettre en ligne la version corrigée — mais sans la mise en page de l'éditeur. Et bien sûr, <i>bye bye</i> au <span class="hl-teal">CC-BY</span>&nbsp;: les éditeurs imposent la <span class="hl-gold">CC-BY-NC-ND</span>.</div>
+  <span class="badge badge-yellow"><span class="hl-yellow">CC&nbsp;BY-NC-ND</span>&nbsp;:&nbsp;<span class="hl-red">-20&nbsp;lecteurs</span></span>
+  <div class="card-body green">C'est ce qui nous reste à tenter quand on publie chez un éditeur en «&nbsp;accès fermé&nbsp;» (si ce dernier nous l'accorde, dans un acte de clémence envers le pauvre chercheur désormais à sa merci). Lucie dépose sur une archive ouverte la version originale de son manuscrit, la prépublication ou <i>preprint</i> (notamment sans intégrer les suggestions/corrections qu'elle aurait reçues à la suite de l'évaluation par les pairs – qui l'ont fait certainement de manière bénévole, mais passons) et quelques années après la publication par l'éditeur, notre protagoniste peut enfin mettre en ligne la version corrigée de son article (mais en général sans la mise en page faite par l'éditeur, faut pas trop demander non plus…). Et, bien sûr, <i>bye bye</i> au <span class="hl-teal">CC-BY</span>&nbsp;: les éditeurs imposent que ces versions soient diffusées sous <span class="hl-gold">CC&nbsp;BY-NC-ND</span>. Pas question de produire des travaux dérivés (traductions, ressources éducatives, graphiques, etc.) ou encore pire, d'autoriser une quelconque utilisation commerciale (qui pourrait vraiment «&nbsp;booster&nbsp;» la diffusion des recherches, voir ci-dessus).</div>
   <div class="spacer"></div>
 </div>
 
@@ -129,7 +129,7 @@ window.addEventListener('load', function () {
   <div class="card-title yellow">L'édition ouverte et les frais de publication (APCs)</div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
   <span class="badge badge-yellow">APCs&nbsp;:&nbsp;archives&nbsp;OA et Green&nbsp;OA disparaissent&nbsp;/&nbsp;+&nbsp;de monstres&nbsp;(7s)</span>
-  <div class="card-body green">En gros, c'est traître. Plutôt que de faire payer le lecteur, on fait payer l'auteur ou les institutions de recherche. Ce système peut occasionner d'importantes inégalités (qui paie plus, publie plus et s'achète une autorité scientifique). Plutôt que bander les yeux du lecteur avec une <i>paywall</i>, on préfère museler les auteurs qui ne peuvent pas payer et, de prime, on s'affiche avec un label <i>Open Access</i>.</div>
+  <div class="card-body green">En gros, c'est traître. Plutôt que de faire payer le lecteur, on fait payer l'auteur ou les institutions de recherche. Au-delà des inégalités frappantes que ce système peut occasionner autant entre individus qu'institutions (qui paie plus, publie plus et s'achète finalement une autorité scientifique), il préserve le <i>status quo</i> qui régit les rapports entre les grands éditeurs, les auteurs et les financeurs publics notamment. Et là s'envolent nos espoirs d'un futur avec des publications plus variées (la bibliodiversité) et avec un forum scientifique plus égalitaire. En résumé&nbsp;: plutôt que bander les yeux de lecteur avec une <i>paywall</i>, on préfère museler les auteurs qui ne peuvent pas payer et, de prime, on s'affiche avec un label <i>Open Access</i>.</div>
   <div class="spacer"></div>
 </div>
 
@@ -137,14 +137,14 @@ window.addEventListener('load', function () {
   <div class="card-sprites"><img src="assets/arXiv.gif"><img src="assets/archive_HAL.gif"><img src="assets/archive_zenodo.gif"></div>
   <div class="card-title cyan">Les archives ouvertes</div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
-  <div class="card-body cyan">Ces «&nbsp;bibliothèques numériques&nbsp;» garantissent un accès libre aux articles. Elles sont financées par des organismes nationaux (HAL), européens (Zenodo) ou des organisations à but non lucratif (arXiv). Le dépôt est gratuit mais soumis à certaines conditions&nbsp;: les auteurs doivent s'enregistrer, parfois l'affiliation à une institution de recherche est requise (Zenodo est le plus «&nbsp;chill&nbsp;» par rapport à ça) et le contenu doit être adapté.</div>
+  <div class="card-body cyan">Pensées pour préserver les données scientifiques en cas d'apocalypse (je rigole à moitié) avec un système de stockage particulier, ces «&nbsp;bibliothèques numériques&nbsp;» garantissent un accès libre aux articles (pas besoin de se prendre la tête avec un énième mot de passe à rajouter dans le post-it juste en dessous de celui que tu as créé uniquement pour commander un objet non identifié qui était dans la liste du baby shower de ta pote&nbsp;: faut juste te rendre sur leur site&nbsp;!). Elles sont financées par des organismes de recherche nationaux (HAL), européens (Zenodo) ou par des organisations à but non lucratif (arXiv). Le dépôt est gratuit, mais est soumis à certaines conditions&nbsp;: les auteurs doivent s'enregistrer, parfois l'affiliation à une institution de recherche est requise (Zenodo est le plus «&nbsp;chill&nbsp;» par rapport à ça) et le contenu doit être adapté (ex.&nbsp;HAL et arXiv modèrent les dépôts). On notera que certaines archives ouvertes sont entretenues par des universités et dédiées aux publications de ses chercheurs comme l'ORBi à Liège ou la e-Buah d'Alcalá.</div>
   <div class="spacer"></div>
 </div>
 
 <div class="card card-cyan">
   <div class="couperin-header"><img class="big" src="assets/Couperin.gif"><div class="couperin-title-row"><img class="small" src="assets/immunitecouperin.gif"><div class="couperin-title">Couperin</div><img class="small" src="assets/immunitecouperin.gif"></div></div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;bouclier&nbsp;(2s)</span>
-  <div class="card-body cyan">Couperin est un consortium sous la forme d'association loi 1901 qui mobilise les établissements de l'Enseignement supérieur et de la Recherche français. C'est un sacré bouclier contre les APCs, car il permet aux chercheurs des établissements associés d'en être exonérés. Couperin est financé par les cotisations de ces derniers ainsi que par des subventions du ministère de l'Enseignement supérieur et de la Recherche.</div>
+  <div class="card-body cyan">Couperin est un consortium sous la forme d'association loi 1901 qui mobilise les établissements de l'Enseignement supérieur et de la Recherche français, qui envoient ses agents les plus motivés au front pour faire corps et négocier avec les grands éditeurs. C'est un sacré bouclier contre les APCs notamment, car il permet aux chercheurs des établissements associés d'en être exonérés. Couperin est financé par les cotisations de ces derniers ainsi que par des subventions du ministère de l'Enseignement supérieur et de la Recherche.</div>
   <div class="spacer"></div>
 </div>
 
@@ -152,13 +152,13 @@ window.addEventListener('load', function () {
   <div class="card-sprites"><img src="assets/Crow.gif"></div>
   <div class="card-title gold">SciHub &amp; Cie</div>
   <span class="badge badge-gold">+10&nbsp;lecteurs&nbsp;/&nbsp;+&nbsp;de monstres&nbsp;(5s)</span>
-  <div class="card-body cream">SciHub est un site qui arrive à déjouer les <i>paywalls</i> des grands éditeurs et donner accès illégalement aux articles publiés chez eux. Si ce site illégal est un personnage dans ce jeu — il est vilain, répétons-le sagement — c'est parce qu'il a bousculé l'ensemble des acteurs de la science ouverte&nbsp;: il diffuse si bien les articles des grands éditeurs que publier en accès ouvert n'apporterait désormais guère d'avantages concernant la visibilité des articles…<br><br>SciHub est l'icône des «&nbsp;shadow libraries&nbsp;»&nbsp;: des bibliothèques numériques illégales qui se spécialisent parfois dans une ou plusieurs disciplines.</div>
+  <div class="card-body cream">SciHub est un site qui arrive à déjouer les <i>paywalls</i> des grands éditeurs et donner accès illégalement aux articles publiés chez eux. Le dispositif a été créé par Alexandra Elbakyan, programmeuse vertueuse qui a une histoire particulièrement rocambolesque et qui est sans doute en cavale pour échapper aux griffes (les avocats) de nos monstres enragés. Si ce site illégal est un personnage dans ce jeu – il est vilain, répétons-le sagement – c'est parce qu'il a bousculé l'ensemble des acteurs de la science ouverte&nbsp;: il diffuse si bien les articles des grands éditeurs que publier en accès ouvert n'apporterait désormais guère d'avantages concernant la visibilité des articles… de quoi faire trembler les fondements de l'accès ouvert et de menacer son existence au profit d'un modèle où la marginalité est le seul ressort pour la libre diffusion du savoir.<br><br>SciHub est l'icône des «&nbsp;shadow libraries&nbsp;»&nbsp;: des bibliothèques numériques illégales qui prennent des formes très diverses et se spécialisent parfois dans une ou plusieurs disciplines.</div>
   <div class="spacer"></div>
 </div>
 
 <div class="card card-gray">
   <div class="card-title gray">À propos du jeu</div>
-  <div class="card-body gray">Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte, le jeu «&nbsp;Lucie&nbsp;: une course pour la science ouverte&nbsp;» se veut une ressource éducative libre (REL) et évolutive. Inspiré des mécanismes de «&nbsp;Chrome Dino&nbsp;», le jeu présente les personnages emblématiques de la science ouverte en France&nbsp;: les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès ouvert avec les deux types de licence (CC&nbsp;BY et CC&nbsp;BY&nbsp;NC-ND), le modèle économique des APCs, ainsi que les archives ouvertes (Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin et SciHub, site illégal de téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.</div>
+  <div class="card-body gray">Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte, le jeu «&nbsp;Lucie&nbsp;: une course pour la science ouverte&nbsp;» se veut une ressource éducative libre (REL) et évolutive. Inspiré des mécanismes de «&nbsp;Chrome Dino&nbsp;», le jeu présente les personnages emblématiques de la science ouverte en France&nbsp;: les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès ouvert avec les deux types de licence de distribution les plus dichotomiques du spectre CC-BY (CC&nbsp;BY et CC&nbsp;BY-NC-ND) et le modèle économique des «&nbsp;APCs&nbsp;» (<i>article processing charges</i> [frais de publication]), ainsi que les archives ouvertes (représentées par Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin, qui négocie avec les grands éditeurs pour les établissements de l'Enseignement supérieur et de la Recherche français, et SciHub, site illégal de téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.</div>
   <div class="spacer"></div>
 </div>
 
