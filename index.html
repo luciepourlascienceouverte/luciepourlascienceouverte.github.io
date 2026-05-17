@@ -6,51 +6,259 @@
 <title>Lucie : une course pour la science ouverte</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 <style>
+  /* Variables CSS pour responsive */
+  :root { --scale: 1; } /* Mobile par défaut */
+  
+  @media (min-width: 769px) {
+    :root { --scale: 1.7; } /* Desktop x1.7 */
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   a { text-decoration: none; }
-  body { font-family: 'Space Mono', monospace; background-color: #000; color: #fff; max-width: 480px; margin: 0 auto; padding: 0 12px 60px; }
-  .hero { display: flex; flex-direction: column; padding-top: 50px; }
-  .hero-char { width: 52px; image-rendering: pixelated; margin-bottom: -30px; margin-left: 100px; position: relative; z-index: 1; }
-  .hero-title { font-size: 24px; color: #ffd000; margin: 0 0 0 10px; }
-  .hero-sub { font-size: 12px; color: #fff1b5; margin: 5px 0 0 25px; }
-  .play-btn-container { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 30px auto 0; }
-  .play-btn-container img { height: 22px; image-rendering: pixelated; }
-  .play-btn { display: block; font-family: 'Space Mono', monospace; font-size: 16px; color: #00ffd0; border: 2px solid #00ffd0; border-radius: 50px; padding: 12px 40px; text-decoration: none; text-align: center; }
-  .section-title { font-size: 16px; color: #ffcb00; margin: 24px 10px 16px; }
-  .card { border-radius: 25px; margin: 12px 12px; padding: 16px 0; overflow: visible; }
-  .card-yellow { background: rgba(198,186,13,0.28); border: 1px solid #ffda00; }
-  .card-red { background: rgba(198,13,13,0.28); border: 1px solid #ff0000; }
-  .card-green { background: rgba(91,198,13,0.28); border: 1px solid #2bff00; }
-  .card-teal { background: rgba(13,198,108,0.28); border: 1px solid #00ff86; }
-  .card-gold { background: rgba(146,114,8,0.28); border: 1px solid #ffe500; }
-  .card-cyan { background: rgba(8,133,146,0.28); border: 1px solid #00fdff; }
-  .card-lime { background: rgba(171,186,70,0.28); border: 1px solid #f4ff00; }
-  .card-gray { background: rgba(100,100,100,0.28); border: 1px solid #888888; }
-  .card-title { font-size: 16px; padding: 16px 16px 0; text-align: center; }
-  .card-title.red { color: #ff6a6a; } .card-title.green { color: #98ff6a; } .card-title.yellow { color: #fff16f; } .card-title.cyan { color: #00ffec; } .card-title.gold { color: #f7ff00; } .card-title.gray { color: #cccccc; }
-  .card-sprites { display: flex; gap: 4px; padding: 8px 16px 0; justify-content: center; align-items: center; }
-  .card-sprites img { height: 45px; image-rendering: pixelated; }
-  .lucie-header { position: relative; display: flex; align-items: center; padding: 22px 18px 0 18px; min-height: 72px; }
-  .lucie-header img { position: absolute; left: 14px; top: -45px; width: 52px; image-rendering: pixelated; }
-  .lucie-name { font-size: 16px; color: #fff16f; margin-left: 68px; margin-top: -45px; }
-  .goa-header { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px 0; }
-  .goa-header img { height: 45px; image-rendering: pixelated; }
-  .goa-title { font-size: 14px; color: #98ff6a; text-align: center; }
-  .couperin-header { display: flex; flex-direction: column; align-items: center; padding: 10px 16px 0; gap: 0px; }
-  .couperin-header img.big { height: 55px; image-rendering: pixelated; margin-bottom: -8px; }
-  .couperin-title-row { display: flex; align-items: center; justify-content: center; gap: 6px; }
-  .couperin-title-row img.small { height: 22px; image-rendering: pixelated; }
-  .couperin-title { font-size: 16px; color: #00ffec; }
-  .badge { display: block; background: rgba(38,38,38,0.49); border-radius: 25px; font-size: 8.5px; padding: 7px 12px; margin: 4px 50px; text-align: center; line-height: 1.3; }
-  .badge-red { border: 1px solid #ff0000; color: #ff6a6a; } .badge-green { border: 1px solid #47ff00; color: #6aff73; } .badge-yellow { border: 1px solid #ff0000; color: #fff900; } .badge-gold { border: 1px solid #f4ff00; color: #feff00; }
-  .badge:first-of-type { margin-top: 18px; } 
-  .card-body { font-size: 10px; line-height: 1.6; margin: 16px 18px; }
-  .card-body.yellow { color: #fff1bc; } .card-body.green { color: #b5feb7; } .card-body.cyan { color: #b5fafe; } .card-body.cream { color: #fbfeb5; } .card-body.gray { color: #cccccc; }
-  .hl-yellow { color: #fcff40; } .hl-green { color: #00ff07; } .hl-red { color: #ff6a6a; } .hl-teal { color: #98ff6a; } .hl-gold { color: #fcff40; }
-  .spacer { margin-bottom: 10px; }
-  .boma-footer { display: flex; flex-direction: column; align-items: center; margin-top: 16px; }
-  .boma-footer img { height: 90px; image-rendering: pixelated; margin-bottom: 1px; }
-  .boma-footer .tagline { font-size: 9px; color: #fff; text-align: center; line-height: 1.2; }
+  
+  body { 
+    font-family: 'Space Mono', monospace; 
+    background-color: #000; 
+    color: #fff; 
+    max-width: calc(480px * var(--scale)); 
+    margin: 0 auto; 
+    padding: 0 calc(12px * var(--scale)) calc(60px * var(--scale)); 
+  }
+  
+  .hero { 
+    display: flex; 
+    flex-direction: column; 
+    padding-top: calc(50px * var(--scale)); 
+  }
+  
+  .hero-char { 
+    width: calc(52px * var(--scale)); 
+    image-rendering: pixelated; 
+    margin-bottom: calc(-30px * var(--scale)); 
+    margin-left: calc(100px * var(--scale)); 
+    position: relative; 
+    z-index: 1; 
+  }
+  
+  .hero-title { 
+    font-size: calc(24px * var(--scale)); 
+    color: #ffd000; 
+    margin: 0 0 0 calc(10px * var(--scale)); 
+  }
+  
+  .hero-sub { 
+    font-size: calc(12px * var(--scale)); 
+    color: #fff1b5; 
+    margin: calc(5px * var(--scale)) 0 0 calc(25px * var(--scale)); 
+  }
+  
+  .play-btn-container { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: calc(8px * var(--scale)); 
+    margin: calc(30px * var(--scale)) auto 0; 
+  }
+  
+  .play-btn-container img { 
+    height: calc(22px * var(--scale)); 
+    image-rendering: pixelated; 
+  }
+  
+  .play-btn { 
+    display: block; 
+    font-family: 'Space Mono', monospace; 
+    font-size: calc(16px * var(--scale)); 
+    color: #00ffd0; 
+    border: calc(2px * var(--scale)) solid #00ffd0; 
+    border-radius: calc(50px * var(--scale)); 
+    padding: calc(12px * var(--scale)) calc(40px * var(--scale)); 
+    text-decoration: none; 
+    text-align: center; 
+  }
+  
+  .section-title { 
+    font-size: calc(16px * var(--scale)); 
+    color: #ffcb00; 
+    margin: calc(24px * var(--scale)) calc(10px * var(--scale)) calc(16px * var(--scale)); 
+  }
+  
+  .card { 
+    border-radius: calc(25px * var(--scale)); 
+    margin: calc(12px * var(--scale)) calc(12px * var(--scale)); 
+    padding: calc(16px * var(--scale)) 0; 
+    overflow: visible; 
+  }
+  
+  .card-yellow { background: rgba(198,186,13,0.28); border: calc(1px * var(--scale)) solid #ffda00; }
+  .card-red { background: rgba(198,13,13,0.28); border: calc(1px * var(--scale)) solid #ff0000; }
+  .card-green { background: rgba(91,198,13,0.28); border: calc(1px * var(--scale)) solid #2bff00; }
+  .card-teal { background: rgba(13,198,108,0.28); border: calc(1px * var(--scale)) solid #00ff86; }
+  .card-gold { background: rgba(146,114,8,0.28); border: calc(1px * var(--scale)) solid #ffe500; }
+  .card-cyan { background: rgba(8,133,146,0.28); border: calc(1px * var(--scale)) solid #00fdff; }
+  .card-lime { background: rgba(171,186,70,0.28); border: calc(1px * var(--scale)) solid #f4ff00; }
+  .card-gray { background: rgba(100,100,100,0.28); border: calc(1px * var(--scale)) solid #888888; }
+  
+  .card-title { 
+    font-size: calc(16px * var(--scale)); 
+    padding: calc(16px * var(--scale)) calc(16px * var(--scale)) 0; 
+    text-align: center; 
+  }
+  
+  .card-title.red { color: #ff6a6a; } 
+  .card-title.green { color: #98ff6a; } 
+  .card-title.yellow { color: #fff16f; } 
+  .card-title.cyan { color: #00ffec; } 
+  .card-title.gold { color: #f7ff00; } 
+  .card-title.gray { color: #cccccc; }
+  
+  .card-sprites { 
+    display: flex; 
+    gap: calc(4px * var(--scale)); 
+    padding: calc(8px * var(--scale)) calc(16px * var(--scale)) 0; 
+    justify-content: center; 
+    align-items: center; 
+  }
+  
+  .card-sprites img { 
+    height: calc(45px * var(--scale)); 
+    image-rendering: pixelated; 
+  }
+  
+  .lucie-header { 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    padding: calc(22px * var(--scale)) calc(18px * var(--scale)) 0 calc(18px * var(--scale)); 
+    min-height: calc(72px * var(--scale)); 
+  }
+  
+  .lucie-header img { 
+    position: absolute; 
+    left: calc(14px * var(--scale)); 
+    top: calc(-45px * var(--scale)); 
+    width: calc(52px * var(--scale)); 
+    image-rendering: pixelated; 
+  }
+  
+  .lucie-name { 
+    font-size: calc(16px * var(--scale)); 
+    color: #fff16f; 
+    margin-left: calc(68px * var(--scale)); 
+    margin-top: calc(-45px * var(--scale)); 
+  }
+  
+  .goa-header { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: calc(8px * var(--scale)); 
+    padding: calc(10px * var(--scale)) calc(16px * var(--scale)) 0; 
+  }
+  
+  .goa-header img { 
+    height: calc(45px * var(--scale)); 
+    image-rendering: pixelated; 
+  }
+  
+  .goa-title { 
+    font-size: calc(14px * var(--scale)); 
+    color: #98ff6a; 
+    text-align: center; 
+  }
+  
+  .couperin-header { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: calc(10px * var(--scale)) calc(16px * var(--scale)) 0; 
+    gap: 0px; 
+  }
+  
+  .couperin-header img.big { 
+    height: calc(55px * var(--scale)); 
+    image-rendering: pixelated; 
+    margin-bottom: calc(-8px * var(--scale)); 
+  }
+  
+  .couperin-title-row { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: calc(6px * var(--scale)); 
+  }
+  
+  .couperin-title-row img.small { 
+    height: calc(22px * var(--scale)); 
+    image-rendering: pixelated; 
+  }
+  
+  .couperin-title { 
+    font-size: calc(16px * var(--scale)); 
+    color: #00ffec; 
+  }
+  
+  .badge { 
+    display: block; 
+    background: rgba(38,38,38,0.49); 
+    border-radius: calc(25px * var(--scale)); 
+    font-size: calc(8.5px * var(--scale)); 
+    padding: calc(7px * var(--scale)) calc(12px * var(--scale)); 
+    margin: calc(4px * var(--scale)) calc(50px * var(--scale)); 
+    text-align: center; 
+    line-height: 1.3; 
+  }
+  
+  .badge-red { border: calc(1px * var(--scale)) solid #ff0000; color: #ff6a6a; } 
+  .badge-green { border: calc(1px * var(--scale)) solid #47ff00; color: #6aff73; } 
+  .badge-yellow { border: calc(1px * var(--scale)) solid #ff0000; color: #fff900; } 
+  .badge-gold { border: calc(1px * var(--scale)) solid #f4ff00; color: #feff00; }
+  
+  .badge:first-of-type { 
+    margin-top: calc(18px * var(--scale)); 
+  }
+  
+  .card-body { 
+    font-size: calc(10px * var(--scale)); 
+    line-height: 1.6; 
+    margin: calc(16px * var(--scale)) calc(18px * var(--scale)); 
+  }
+  
+  .card-body.yellow { color: #fff1bc; } 
+  .card-body.green { color: #b5feb7; } 
+  .card-body.cyan { color: #b5fafe; } 
+  .card-body.cream { color: #fbfeb5; } 
+  .card-body.gray { color: #cccccc; }
+  
+  .hl-yellow { color: #fcff40; } 
+  .hl-green { color: #00ff07; } 
+  .hl-red { color: #ff6a6a; } 
+  .hl-teal { color: #98ff6a; } 
+  .hl-gold { color: #fcff40; }
+  
+  .spacer { 
+    margin-bottom: calc(10px * var(--scale)); 
+  }
+  
+  .boma-footer { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: calc(16px * var(--scale)); 
+  }
+  
+  .boma-footer img { 
+    height: calc(90px * var(--scale)); 
+    image-rendering: pixelated; 
+    margin-bottom: calc(1px * var(--scale)); 
+  }
+  
+  .boma-footer .tagline { 
+    font-size: calc(9px * var(--scale)); 
+    color: #fff; 
+    text-align: center; 
+    line-height: 1.2; 
+  }
 </style>
 </head>
 <body>
@@ -93,12 +301,12 @@ window.addEventListener('load', function () {
 
 <div class="section-title">Les personnages</div>
 
-<div class="card card-yellow" style="margin-top:50px;">
+<div class="card card-yellow" style="margin-top: calc(50px * var(--scale));">
   <div class="lucie-header">
     <img src="assets/Lucie.gif" alt="Lucie">
     <div class="lucie-name">Lucie</div>
   </div>
-  <div class="card-body yellow" style="margin-top:-20px;">Cette ampoule mutante pleine d'idées cherche à diffuser ses articles au plus grand nombre de lecteurs et pour cela elle doit avoir au moins un article en accès ouvert (OA). En évitant les éditeurs prédateurs, elle doit déposer ses articles soit sur les archives ouvertes soit les publier avec les éditeurs en accès ouvert. Mais attention, certaines pratiques en accès ouvert peuvent lui coûter cher (littéralement, mais pas que…).</div>
+  <div class="card-body yellow" style="margin-top: calc(-20px * var(--scale));">Cette ampoule mutante pleine d'idées cherche à diffuser ses articles au plus grand nombre de lecteurs et pour cela elle doit avoir au moins un article en accès ouvert (OA). En évitant les éditeurs prédateurs, elle doit déposer ses articles soit sur les archives ouvertes soit les publier avec les éditeurs en accès ouvert. Mais attention, certaines pratiques en accès ouvert peuvent lui coûter cher (littéralement, mais pas que…).</div>
   <div class="spacer"></div>
 </div>
 
@@ -106,12 +314,12 @@ window.addEventListener('load', function () {
   <div class="card-sprites"><img src="assets/pub_e.gif"><img src="assets/pub_w.gif"><img src="assets/pub_t.gif"><img src="assets/pub_s.gif"><img src="assets/pub_sa.gif"></div>
   <div class="card-title red">Les éditeurs prédateurs &amp; Cie</div>
   <span class="badge badge-red">-1&nbsp;article&nbsp;/&nbsp;-30&nbsp;lecteurs</span>
-  <div class="card-body yellow">Les «&nbsp;Big Five&nbsp;» de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie. Avec une marge de profit qui peut dépasser les 40%, ils ont tout intérêt (encore littéralement, mais pas que…) en que l'accès ouvert ne se développe pas ou, mieux, qu'il se développe, mais à leur manière (tiens, les APCs…). Les enjeux sont toutefois plus complexes et ne concernent pas seulement ces cinq «&nbsp;monstres&nbsp;» de l'édition&nbsp;: en effet, la faune de l'édition scientifique compte avec de plus petits éditeurs (souvent associatifs) qui pourraient disparaître s'ils se mettaient à éditer en accès ouvert, car ils dépendent souvent de l'argent des abonnements pour fonctionner. Par ailleurs, souvent ces revenus se destinent non seulement à financer l'édition, mais aussi à l'organisation d'événements à caractère culturel et scientifique. La problématique est donc de trouver une voie qui permette à la fois de préserver la «&nbsp;bibliodiversité&nbsp;» qu'offrent ces petits éditeurs et de répandre le modèle éditorial en accès ouvert.</div>
+  <div class="card-body yellow">Les «&nbsp;Big Five&nbsp;» de l'édition scientifique vont tout tenter pour récupérer les articles de Lucie. Avec une marge de profit qui peut dépasser les 40%, ils ont tout intérêt (encore littéralement, mais pas que…) en que l'accès ouvert ne se développe pas ou, mieux, qu'il se développe, mais à leur manière (tiens, les APCs…). Les enjeux sont toutefois plus complexes et ne concernent pas seulement ces cinq «&nbsp;monstres&nbsp;» de l'édition&nbsp;: en effet, la faune de l'édition scientifique compte avec de plus petits éditeurs (souvent associatifs) qui pourraient disparaître s'ils se mettaient à éditer en accès ouvert, car ils dépendent souvent de l'argent des abonnements pour fonctionner. Par ailleurs, souvent ces revenus se destinent non seulement à financer l'édition, mais aussi à l'organisation d'événements à caractère culturul et scientifique. La problématique est donc de trouver une voie qui permette à la fois de préserver la «&nbsp;bibliodiversité&nbsp;» qu'offrent ces petits éditeurs et de répandre le modèle éditorial en accès ouvert.</div>
   <div class="spacer"></div>
 </div>
 
 <div class="card card-green">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px 50px 0;justify-items:center;"><img src="assets/ccby.gif" style="height:24px;image-rendering:pixelated;"><img src="assets/nc-nd.gif" style="height:24px;image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:45px;image-rendering:pixelated;"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:calc(4px * var(--scale));padding:calc(10px * var(--scale)) calc(50px * var(--scale)) 0;justify-items:center;"><img src="assets/ccby.gif" style="height:calc(24px * var(--scale));image-rendering:pixelated;"><img src="assets/nc-nd.gif" style="height:calc(24px * var(--scale));image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:calc(45px * var(--scale));image-rendering:pixelated;"><img src="assets/unlock.gif" style="height:calc(45px * var(--scale));image-rendering:pixelated;"></div>
   <div class="card-title green">Les éditeurs en accès ouvert et les licences de distribution</div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
   <span class="badge badge-green">CC&nbsp;BY&nbsp;:&nbsp;+25&nbsp;lecteurs&nbsp;/&nbsp;bouclier&nbsp;(7s)</span>
@@ -129,7 +337,7 @@ window.addEventListener('load', function () {
 </div>
 
 <div class="card card-gold">
-  <div style="display:flex;flex-direction:column;align-items:center;padding-top:8px;gap:4px;"><img src="assets/apc_text.gif" style="height:25px;image-rendering:pixelated;"><img src="assets/oa-apc.gif" style="height:55px;image-rendering:pixelated;"></div>
+  <div style="display:flex;flex-direction:column;align-items:center;padding-top:calc(8px * var(--scale));gap:calc(4px * var(--scale));"><img src="assets/apc_text.gif" style="height:calc(25px * var(--scale));image-rendering:pixelated;"><img src="assets/oa-apc.gif" style="height:calc(55px * var(--scale));image-rendering:pixelated;"></div>
   <div class="card-title yellow">L'édition ouverte et les frais de publication (APCs)</div>
   <span class="badge badge-green">+1&nbsp;article&nbsp;/&nbsp;+50&nbsp;lecteurs</span>
   <span class="badge badge-yellow">APCs&nbsp;:&nbsp;archives&nbsp;OA et Green&nbsp;OA disparaissent&nbsp;/&nbsp;+&nbsp;de&nbsp;monstres&nbsp;(7s)</span>
@@ -163,11 +371,12 @@ window.addEventListener('load', function () {
 <div class="card card-gray">
   <div class="card-title gray">À propos du jeu</div>
   <div class="card-body gray">Conçu pour sensibiliser les étudiants de l'enseignement supérieur sur les enjeux de la science ouverte, le jeu «&nbsp;Lucie&nbsp;: une course pour la science ouverte&nbsp;» se veut une ressource éducative libre (REL) et évolutive. Inspiré des mécanismes de «&nbsp;Chrome Dino&nbsp;», le jeu présente les personnages emblématiques de la science ouverte en France&nbsp;: les cinq grands éditeurs qui monopolisent le marché de l'édition scientifique, les éditeurs en accès ouvert avec les deux types de licence de distribution les plus dichotomiques du spectre CC&nbsp;BY (CC&nbsp;BY et CC&nbsp;BY-NC-ND) et le modèle économique des «&nbsp;APCs&nbsp;» (<i>article processing charges</i> [frais de publication]), ainsi que les archives ouvertes (représentées par Zenodo, Arxiv et HAL). À ceux-là s'ajoutent l'association Couperin, qui négocie avec les grands éditeurs pour les établissements de l'Enseignement supérieur et de la Recherche français, et SciHub, site illégal de téléchargement d'articles qui a bousculé l'ensemble des acteurs de l'édition scientifique.</div>
- <div class="boma-footer">
+  <div style="font-size: calc(10px * var(--scale)); color: #cccccc; margin: calc(12px * var(--scale)) calc(18px * var(--scale)) 0; text-align: center;">édité par</div>
+  <div class="boma-footer">
     <img src="assets/BOMA.gif" alt="BOMA">
     <div class="tagline">accès ouvert &amp; diversité, pour toujours</div>
   </div>
-  <div class="card-body gray" style="margin-top:24px; text-align:center;">CC&nbsp;BY Edson Poiati Filho</div>
+  <div class="card-body gray" style="margin-top: calc(24px * var(--scale)); text-align: center;">CC&nbsp;BY Edson Poiati Filho</div>
   <div class="spacer"></div>
 </div>
 
