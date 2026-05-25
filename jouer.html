@@ -34,7 +34,7 @@ canvas{display:block;width:100%;height:auto;border-radius:10px;image-rendering:p
 </div>
 <div id="wrap"><canvas id="c" width="920" height="360"></canvas></div>
 <p class="hint" style="opacity:0.75;">Tape ou clique (×2 = double saut)</p>
-<p class="hint" style="margin-top:5px;opacity:0.60;font-size:0.60rem;">Échap = menu  &nbsp;·&nbsp;  Échap ×2 = retour au site</p>
+<p class="hint" id="hintEsc" style="margin-top:5px;opacity:0.60;font-size:0.60rem;">Échap = menu  &nbsp;·&nbsp;  Échap ×2 = retour au site</p>
 <p class="hint" style="margin-top:5px;opacity:0.40;">CC BY Edson Poiati Filho</p>
 
 <script>
@@ -1073,8 +1073,10 @@ function drawStart(){
   cx.fillStyle=`rgba(255,255,255,${.4+.3*Math.sin(now*2.5)})`;
   cx.font=`11px 'Space Mono',monospace`;
   cx.fillText('Tape ou clique (x2 pour double saut)',titleX,py+ph-28);
-  cx.fillStyle='rgba(255,255,255,0.28)';cx.font=`9px 'Space Mono',monospace`;
-  cx.fillText('Échap = menu  ·  Échap ×2 = retour au site',titleX,py+ph-13);
+  if(!window.matchMedia('(pointer:coarse)').matches){
+    cx.fillStyle='rgba(255,255,255,0.28)';cx.font=`9px 'Space Mono',monospace`;
+    cx.fillText('Échap = menu  ·  Échap ×2 = retour au site',titleX,py+ph-13);
+  }
   // Attribution discrète
   cx.textAlign='right';
   cx.fillStyle='rgba(255,255,255,0.18)';
@@ -1235,6 +1237,7 @@ if(window.matchMedia('(orientation:portrait)').matches) startPhoneAnim();
     if(tx>=8&&tx<=62&&ty>=38&&ty<=56){e.stopPropagation();mode='start';}
   },{capture:true});
 })();
+if(window.matchMedia('(pointer:coarse)').matches){var he=document.getElementById('hintEsc');if(he)he.style.display='none';}
 mkStars();resetP();requestAnimationFrame(loop);
 </script>
 </body>
