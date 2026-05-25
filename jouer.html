@@ -1155,6 +1155,7 @@ function loop(ts){
   drawParts();
   drawTooltips(lastDt);
   if(mode==='play'||mode==='over')drawLuci();
+  _drawMenuBtn();
   drawHUD();
   if(mode==='start')drawStart();
   if(mode==='over')drawOver();
@@ -1204,6 +1205,40 @@ if(window.matchMedia('(orientation:portrait)').matches) startPhoneAnim();
 
 
 
+
+
+// Canvas menu button for mobile
+var _menuBtn={x:W-60,y:6,w:52,h:20,active:false};
+function _drawMenuBtn(){
+  if(!window.matchMedia('(pointer:coarse)').matches) return;
+  if(mode!=='play'&&mode!=='over') return;
+  cx.save();
+  cx.fillStyle='rgba(255,255,255,0.13)';
+  cx.beginPath();
+  cx.roundRect(_menuBtn.x,_menuBtn.y,_menuBtn.w,_menuBtn.h,5);
+  cx.fill();
+  cx.strokeStyle='rgba(255,255,255,0.28)';cx.lineWidth=1;
+  cx.beginPath();
+  cx.roundRect(_menuBtn.x,_menuBtn.y,_menuBtn.w,_menuBtn.h,5);
+  cx.stroke();
+  cx.fillStyle='rgba(255,255,255,0.70)';
+  cx.font=`bold 9px 'Space Mono',monospace`;
+  cx.textAlign='center';
+  cx.fillText('menu',_menuBtn.x+_menuBtn.w/2,_menuBtn.y+13);
+  cx.restore();
+}
+C.addEventListener('pointerdown',function(e){
+  if(!window.matchMedia('(pointer:coarse)').matches) return;
+  if(mode!=='play'&&mode!=='over') return;
+  var rect=C.getBoundingClientRect();
+  var scaleX=W/rect.width, scaleY=H/rect.height;
+  var tx=(e.clientX-rect.left)*scaleX;
+  var ty=(e.clientY-rect.top)*scaleY;
+  if(tx>=_menuBtn.x&&tx<=_menuBtn.x+_menuBtn.w&&ty>=_menuBtn.y&&ty<=_menuBtn.y+_menuBtn.h){
+    e.stopPropagation();
+    mode='start';
+  }
+},{capture:true});
 mkStars();resetP();requestAnimationFrame(loop);
 </script>
 </body>
