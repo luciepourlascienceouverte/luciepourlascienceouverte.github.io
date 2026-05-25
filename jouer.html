@@ -33,11 +33,12 @@ canvas{display:block;width:100%;height:auto;border-radius:10px;image-rendering:p
   <div style="font-family:'Space Mono',monospace;font-size:0.85rem;line-height:1.7;text-align:center;">Tourne ton appareil<br>en mode <strong style="color:#FFD060">paysage</strong><br><span style="opacity:0.6;font-size:0.75rem;">pour jouer à Lucie !</span></div>
 </div>
 <div id="wrap"><canvas id="c" width="920" height="360"></canvas></div>
-<p class="hint">Tape ou clique (x2 pour double saut)</p>
-<p class="hint" style="margin-top:4px;opacity:0.30;">CC BY Edson Poiati Filho</p>
+<p class="hint" style="opacity:0.75;">Tape ou clique (×2 = double saut)</p>
+<p class="hint" style="margin-top:5px;opacity:0.60;font-size:0.60rem;">Échap = menu  &nbsp;·&nbsp;  Échap ×2 = retour au site</p>
+<p class="hint" style="margin-top:5px;opacity:0.40;">CC BY Edson Poiati Filho</p>
 
 <script>
-const BOMA_FRAMES = [
+var BOMA_FRAMES = [
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAYAAAAUg66AAAAAAXNSR0IArs4c6QAAAqtJREFUeJzt1DERhEAABMEDW/jAB0rw8T5eFziAgGCoolvBJjtjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAGFM94M6+Lke9Ad5q+/1f/+Ercz0A+C4BAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjICBCQESAgI0BARoCAjAABGQECMgIEZAQIyAgQkBEgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxyAo4RBTApJ7CNAAAAAElFTkSuQmCC",
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAYAAAAUg66AAAAAAXNSR0IArs4c6QAABBNJREFUeJzt3TGOE0kYgNHxihOMxAkICDYls+YCHMApRGRI65M42IwIwvUB5gKsM1ICAk6AxBW8J9iqoNX6esbvSY5a7S4H/amCX667OwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuLvb1QuYOR3213oNsFXH82Xz7/DIH/UCgNslQEBGgICMAAEZAQIyAgRkBAjIvKgXsHXvPr5bdP/9w4dF958O++H14/my6Pt/f/206P6Zp/77v/z9ZdH3M2YHBGQECMgIEJARICAjQEBGgICMAAEZc0ATszmQt2//HF7/8Xk8B/P6/bpzOLM5l18/v636/K3/fnM+LTsgICNAQEaAgIwAARkBAjICBGQECMiYA1ro8fH78PpsTmjrXr56s+j+teeMZsz5bJsdEJARICAjQEBGgICMAAEZAQIyAgRkzAGtbDYntHWzOZ6lc0JLzc4NY9vsgICMAAEZAQIyAgRkBAjICBCQESAgYw4otvYcy/3D+Fyu2blZS6197hdPmx0QkBEgICNAQEaAgIwAARkBAjICBGR29QJmTof9tV4DbNXxfNn8OzxiBwRkBAjICBCQESAgI0BARoCAjAABGf8H9Mz99c+/w+u73XiM5Hodj2HN7p9xrtdtswMCMgIEZAQIyAgQkBEgICNAQEaAgIw5IBZZe06I580OCMgIEJARICAjQEBGgICMAAEZAQIyAsQiu91u+Ller8MPt02AgIwAARkBAjICBGQECMgIEJARICAjQKxqNifEbRMgICNAQEaAgIwAARkBAjICBGQECMgIEJARICAjQEBGgICMAAEZAQIyAgRkBAjIbP4PWU6HvcOj4H8cz5fNv8MjdkBARoCAjAABGQECMgIEZAQIyAgQkHlRL4B1Hc+X4fXfXz+t+vz7hw/D66fDftXns212QEBGgICMAAEZAQIyAgRkBAjICBCQMQf0zM3mfH79/Lbq8398Hs8BPT5+X/X5bJsdEJARICAjQEBGgICMAAEZAQIyAgRkzAEx9PLVm0X3rz1nxNNmBwRkBAjICBCQESAgI0BARoCAjAABGXNADM3meJbOCXHb7ICAjAABGQECMgIEZAQIyAgQkBEgIGMO6Jm7fxifyzU7N2yp1+/H33867Fd9PttmBwRkBAjICBCQESAgI0BARoCAjAABmV29gJnTYX+t1wBbdTxfNv8Oj9gBARkBAjICBGQECMgIEJARICAjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACzyH9sngKd7SyKtAAAAAElFTkSuQmCC",
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAYAAAAUg66AAAAAAXNSR0IArs4c6QAABEVJREFUeJzt3SGOG0kYgNHxak8wUk4QEBAaZs0FcgDTBIWtFJ/EYFlQAtcHyAWyZqEBATlBpFzBSxfsdoGe1tc9fk8yGpWnGvhTgV9dd3cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHB3t6s3MHI67K/1HmCtjufL6n/DU36rNwDcLgECMgIEZAQIyAgQkBEgICNAQOb3egO1N3+8WfT77x/ezVp/Ouwn/348X2Z9/68vH2atH3nqz//pz0+z1t86JyAgI0BARoCAjAABGQECMgIEZAQIyNz8HNBojuP165ezvv/7x+k5mBdvl53DGc25/PzxddH/v/Xn//z52yPviH9zAgIyAgRkBAjICBCQESAgI0BARoCAzM3PAY2M5kBG7xNaes5mac+ev5q1fu3Pb86n5QQEZAQIyAgQkBEgICNAQEaAgIwAARlzQDMt/T6h2miOZ+6c0NLc27VuTkBARoCAjAABGQECMgIEZAQIyAgQkDEHtLD6fTP3D9P3co3uzZpr6Xu/Tof9ot/PspyAgIwAARkBAjICBGQECMgIEJARICCzqzcwcjrsr/UeYK2O58vqf8NTnICAjAABGQECMgIEZAQIyAgQkBEgION9QBv3/q+/Z63f7abHSK7X6TGs0fq5vO/naXMCAjICBGQECMgIEJARICAjQEBGgICMAG3cbreb/Czter1OfpZez7YJEJARICAjQEBGgICMAAEZAQIyAgRkBIhZRnNIozmfeo6JlgABGQECMgIEZAQIyAgQkBEgICNAQMa9YCzKLA9TnICAjAABGQECMgIEZAQIyAgQkBEgIGMOaOPcncWWOQEBGQECMgIEZAQIyAgQkBEgICNAQGb1L2s5HfYGXeB/HM+X1f+GpzgBARkBAjICBGQECMgIEJARICAjQEDG+4A27ni+zFr/68uHR9vLf7l/eDdr/emwf7S9sD5OQEBGgICMAAEZAQIyAgRkBAjICBCQMQf0xI3mfH7++Lro///+cXoO6MXbZeeQWDcnICAjQEBGgICMAAEZAQIyAgRkBAjImANi0rPnr2atX3rOiG1zAgIyAgRkBAjICBCQESAgI0BARoCAjDkgJo3meObOCXHbnICAjAABGQECMgIEZAQIyAgQkBEgIGMO6Im7f5i+l2t0b9hc7v1iihMQkBEgICNAQEaAgIwAARkBAjICBGR29QZGTof9td4DrNXxfFn9b3iKExCQESAgI0BARoCAjAABGQECMgIEZDY9Q3ALRnNQW58DGbn153/qnICAjAABGQECMgIEZAQIyAgQkBEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUv8AViHAFV6mxwoAAAAASUVORK5CYII=",
@@ -214,24 +215,24 @@ const COUW=72,COUW2=76; // Couperin
 const GOAW=72,GOAH=98; // Green OA (même taille que OAPC)
 
 // ── Publisher configs ─────────────────────────────────────────
-const PUBS=[
+var PUBS=[
   {name:'A', keys:['pe1','pe2','pe3','pe4'], speed:12},
   {name:'B', keys:['ps1','ps2','ps3','ps4'], speed:10},
   {name:'C', keys:['psa1','psa2','psa3'],    speed:14},
   {name:'D', keys:['pt1','pt2','pt3'],       speed:11},
   {name:'E', keys:['pw1','pw2','pw3','pw4','pw5'], speed:8},
 ];
-const ARCHIVES=[
+var ARCHIVES=[
   {name:'Z', keys:['z1','z2','z3','z4','z5'], speed:8},
   {name:'H', keys:['h1','h2','h3','h4','h5'], speed:8},
   {name:'X', keys:['x1','x2','x3','x4','x5'], speed:8},
 ];
-const OA_KEYS=['oa1','oa2','oa3','oa4','oa5'];
-const OAPC_KEYS=['oapc1','oapc2','oapc3','oapc4','oapc5'];
-const OAPC_DUR=[3/8,1/8,1/8,1/8,3/8]; // frame 1 & 5: 3× longer
-const BAPC_KEYS=['bapc1','bapc2','bapc3'];
-const BY_KEYS=['by1','by2'];
-const ND_KEYS=['nd1','nd2','nd3','nd4','nd5'];
+var OA_KEYS=['oa1','oa2','oa3','oa4','oa5'];
+var OAPC_KEYS=['oapc1','oapc2','oapc3','oapc4','oapc5'];
+var OAPC_DUR=[3/8,1/8,1/8,1/8,3/8]; // frame 1 & 5: 3× longer
+var BAPC_KEYS=['bapc1','bapc2','bapc3'];
+var BY_KEYS=['by1','by2'];
+var ND_KEYS=['nd1','nd2','nd3','nd4','nd5'];
 
 // ── State ─────────────────────────────────────────────────────
 let mode='intro',score=0,hi=0,spd=0,spawnT=0,spawnGap=0;
@@ -358,12 +359,29 @@ function doJump(){
   }
 }
 document.addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();doJump();}});
+
+let _escPressedOnce=false, _escTimer=0;
+document.addEventListener('keydown',function(e){
+  if(e.code==='Escape'){
+    e.preventDefault();
+    if(mode==='play'||mode==='over'){
+      mode='start';
+      _escPressedOnce=true;
+      _escTimer=Date.now();
+    } else if(mode==='start'&&_escPressedOnce&&(Date.now()-_escTimer)<4000){
+      window.location.href='https://luciepourlascienceouverte.github.io/';
+    } else if(mode==='start'){
+      _escPressedOnce=true;
+      _escTimer=Date.now();
+    }
+  }
+});
+
 C.addEventListener('pointerdown',e=>{e.preventDefault();doJump();});
 
 // ── Game flow ─────────────────────────────────────────────────
 function _doStartGame(){mode='play';score=0;spd=180;spawnT=0;spawnGap=2.4;obstacles=[];pickups=[];badges=[];particles=[];crows=[];tooltips=[];hadCCBY=false;hadFirstOA=false;resetP();resetSeen();}
-let _fromStart=false;
-function startGame(){introFr=0;introT=0;mode='intro';_fromStart=true;}
+function startGame(){_doStartGame();}
 function replayFromOver(){mode='start';}
 function endGame(){mode='over';if(score>hi)hi=score;}
 
@@ -468,7 +486,7 @@ function update(ts){
       if(introT>0.07){introT=0;introFr++;}
     } else {
       // introT counts hold time on last frame; slogan fades in over 1.5s
-      if(introT>3.0){if(_fromStart){_fromStart=false;_doStartGame();}else{mode='start';}}
+      if(introT>3.0){mode='start';}
     }
     return;
   }
@@ -601,7 +619,7 @@ function update(ts){
           badges=badges.filter(b=>b!==nearBadge);
           if(P.lives<P.maxLives)P.lives++;P.articlesTotal++;
           score+=50;
-          if(ccType==='ccby'){score+=25;P.immune=true;P.immT=5;P.shieldType='oa';}
+          if(ccType==='ccby'){score+=25;P.immune=true;P.immT=Math.min(10,P.immT+5);P.shieldType='oa';}
           else if(ccType==='ccnd'){score=Math.max(0,score-20);}
           P.depT=1.0;tryTipOA(ccType,p.x+p.w/2,p.y-10);
         }
@@ -631,7 +649,7 @@ function update(ts){
         }
       }
       else if(p.type==='cou'){
-        if(!P.apcBlock){if(P.lives<P.maxLives)P.lives++;P.articlesTotal++;P.immune=true;P.immT=2;P.shieldType='cou';tryTip('cou',p.x+p.w/2,p.y-10);}
+        if(!P.apcBlock){if(P.lives<P.maxLives)P.lives++;P.articlesTotal++;P.immune=true;P.immT=Math.min(10,P.immT+2);P.shieldType='cou';tryTip('cou',p.x+p.w/2,p.y-10);}
         else consume=false;
       }
       else{if(P.lives<P.maxLives)P.lives++;P.articlesTotal++;score+=50;P.immune=true;P.immT=2;P.depT=1.0;}
@@ -945,7 +963,7 @@ function drawHUD(){
     br+=28;
   }
   if(P.immune){
-    const maxT=P.shieldType==='oa'?5:2;
+    const maxT=P.shieldType==='oa'?Math.max(5,P.immT+0.001):Math.max(2,P.immT+0.001);
     const fill=Math.max(0,P.immT/maxT),bx=W/2-80,bw=170,bh=12;
     const isOAshield=P.shieldType==='oa';
     // Colors: green for OA+CC BY, blue for Couperin
@@ -996,7 +1014,7 @@ function drawStart(){
   const now=Date.now()/1000;
 
   // Dark panel
-  const pw=620, ph=268, px=(W-pw)/2, py=H/2-124;
+  const pw=620, ph=280, px=(W-pw)/2, py=H/2-128;
   cx.fillStyle='rgba(0,0,0,0.50)';
   cx.fillRect(px,py,pw,ph);
 
@@ -1025,7 +1043,7 @@ function drawStart(){
   // Body text
   cx.font=`11px 'Space Mono',monospace`;
   cx.fillStyle='rgba(255,255,255,0.80)';
-  const li=14, lg=26, y0=py+112;
+  const li=14, lg=24, y0=py+108;
   // Instruction 1 — éditeurs
   cx.fillText('Évite les éditeurs prédateurs, publie tes articles avec des éditeurs OA',titleX,y0);
   cx.fillText("ou dépose-les sur des archives ouvertes.",titleX,y0+li);
@@ -1039,7 +1057,9 @@ function drawStart(){
 
   cx.fillStyle=`rgba(255,255,255,${.4+.3*Math.sin(now*2.5)})`;
   cx.font=`11px 'Space Mono',monospace`;
-  cx.fillText('Tape ou clique (x2 pour double saut)',titleX,py+ph-16);
+  cx.fillText('Tape ou clique (x2 pour double saut)',titleX,py+ph-28);
+  cx.fillStyle='rgba(255,255,255,0.28)';cx.font=`9px 'Space Mono',monospace`;
+  cx.fillText('Échap = menu  ·  Échap ×2 = retour au site',titleX,py+ph-13);
   // Attribution discrète
   cx.textAlign='right';
   cx.fillStyle='rgba(255,255,255,0.18)';
